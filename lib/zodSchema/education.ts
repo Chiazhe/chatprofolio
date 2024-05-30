@@ -40,4 +40,4 @@ export const educationFormSchema = z.object({
 
 export type SpecializationType = z.infer<typeof specializationSchema>;
 export type RelevantCourseType = z.infer<typeof relevantCoursesSchema>;
-export type EducationType = z.infer<typeof educationFormSchema>;
+export type EducationFormType = z.infer<typeof educationFormSchema>;

@@ -1,5 +1,5 @@
 import {
-  EducationType,
+  EducationFormType,
   RelevantCourseType,
   SpecializationType,
 } from "./zodSchema/education";
@@ -8,7 +8,7 @@ import type { Education } from "@prisma/client";
 export const convertEducationDataFromBackend = (
   databaseEducationType: Education[]
 ) => {
-  const frontendEducationData: EducationType["educations"] = [];
+  const frontendEducationData: EducationFormType["educations"] = [];
   for (let i = 0; i < databaseEducationType.length; i++) {
     const education = databaseEducationType[i];
     // in string[]
@@ -41,7 +41,7 @@ export const convertEducationDataFromBackend = (
 };
 
 export const convertEducationDataToBackend = (
-  frontendEducationData: EducationType["educations"],
+  frontendEducationData: EducationFormType["educations"],
   userId: string
 ) => {
   const databaseEducationType: Education[] = [];
