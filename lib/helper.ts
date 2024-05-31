@@ -3,19 +3,25 @@ import {
   RelevantCourseType,
   SpecializationType,
 } from "./zodSchema/education";
-import type { Education, Experience } from "@prisma/client";
+import type { Education, Experience, Project } from "@prisma/client";
 import {
   ExperienceFormType,
   SkillUsedType,
   WorkDescriptionType,
 } from "./zodSchema/experience";
+import {
+  ProjectDescriptionType,
+  ProjectFormType,
+  ProjectType,
+  TechnologyUsedType,
+} from "./zodSchema/project";
 
 export const convertEducationDataFromBackend = (
-  databaseEducationType: Education[]
+  databaseEducationData: Education[]
 ) => {
   const frontendEducationData: EducationFormType["educations"] = [];
-  for (let i = 0; i < databaseEducationType.length; i++) {
-    const education = databaseEducationType[i];
+  for (let i = 0; i < databaseEducationData.length; i++) {
+    const education = databaseEducationData[i];
     // in string[]
     const specializations = education.specialization;
 
@@ -82,11 +88,11 @@ export const convertEducationDataToBackend = (
 };
 
 export const convertExperienceDataFromBackend = (
-  databaseExperienceType: Experience[]
+  databaseExperienceData: Experience[]
 ) => {
   const frontendExperienceData: ExperienceFormType["experiences"] = [];
-  for (let i = 0; i < databaseExperienceType.length; i++) {
-    const experience = databaseExperienceType[i];
+  for (let i = 0; i < databaseExperienceData.length; i++) {
+    const experience = databaseExperienceData[i];
     // in string[]
     const skillUsed = experience.skillUsed;
 
@@ -150,4 +156,77 @@ export const convertExperienceDataToBackend = (
   }
 
   return databaseExperienceType;
+};
+
+export const convertProjectDataFromBackend = (
+  databaseProjectData: Project[]
+) => {
+  const frontendProjectData: ProjectType[] = [];
+  for (let i = 0; i < databaseProjectData.length; i++) {
+    const project = databaseProjectData[i];
+    // in string[]
+    const technologyUsed = project.technologyUsed;
+
+    // convert to {specialization: string}[]
+    const technologyUsedData: TechnologyUsedType[] = [];
+    for (const technology of technologyUsed) {
+      technologyUsedData.push({ technology: technology });
+    }
+
+    // in string[]
+    const projectDescriptions = project.projectDescription;
+
+    // convert to {specialization: string}[]
+    const projectDescriptionData: ProjectDescriptionType[] = [];
+    for (const projectDescription of projectDescriptions) {
+      projectDescriptionData.push({ projectDescription: projectDescription });
+    }
+
+    frontendProjectData.push({
+      ...project,
+      technologyUsed: technologyUsedData,
+      projectDescription: projectDescriptionData,
+      projectUrl: project.projectUrl as string,
+      githubLink: project.githubLink as string,
+      projectImage: project.projectImage as string,
+    });
+  }
+
+  return frontendProjectData;
+};
+
+export const convertProjectDataToBackend = (
+  frontendProjectData: ProjectType[],
+  userId: string
+) => {
+  const databaseProjectType: Project[] = [];
+
+  for (let i = 0; i < frontendProjectData.length; i++) {
+    const project = frontendProjectData[i];
+    // in {specialization: string}[]
+    const projectDescriptions = project.projectDescription;
+
+    const projectDescriptionData: string[] = [];
+    for (const projectDescription of projectDescriptions) {
+      projectDescriptionData.push(projectDescription.projectDescription);
+    }
+
+    // in {specialization: string}[]
+    const technologyUsed = project.technologyUsed;
+
+    const technologyUsedData: string[] = [];
+    for (const technology of technologyUsed) {
+      technologyUsedData.push(technology.technology);
+    }
+
+    databaseProjectType.push({
+      ...project,
+      projectDescription: projectDescriptionData,
+      technologyUsed: technologyUsedData,
+      holderId: userId,
+      id: project.id ? project.id : -1,
+    });
+  }
+
+  return databaseProjectType;
 };

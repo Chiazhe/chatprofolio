@@ -28,6 +28,7 @@ model User {
   updatedAt      DateTime     @updatedAt
   Education      Education[]
   WorkExperience Experience[]
+  Project        Project[]
 
   @@map("users")
 }
@@ -106,4 +107,21 @@ model Experience {
 
   @@index([holderId])
   @@map("experience")
+}
+
+model Project {
+  id                 Int       @id @default(autoincrement())
+  projectTitle       String
+  projectDescription String[]
+  projectUrl         String?
+  githubLink         String?
+  projectImage       String?
+  technologyUsed     String[]
+  startDate          DateTime?
+  endDate            DateTime?
+  holder             User      @relation(fields: [holderId], references: [id])
+  holderId           String
+
+  @@index([holderId])
+  @@map("project")
 }

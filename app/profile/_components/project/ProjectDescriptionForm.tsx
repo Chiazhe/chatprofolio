@@ -1,62 +1,63 @@
 import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { ExperienceFormType } from "@/lib/zodSchema/experience";
+import { ProjectFormType } from "@/lib/zodSchema/project";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 
-const skillUsedDefaultValue = { skill: "" };
+const projectDescriptionDefaultValue = { projectDescription: "" };
 
-export const SkillUsedForm = ({
+export const ProjectDescriptionForm = ({
   form,
   index,
 }: {
-  form: UseFormReturn<ExperienceFormType>;
+  form: UseFormReturn<ProjectFormType>;
   index: number;
 }) => {
   const { append, remove, fields } = useFieldArray({
-    name: `experiences.${index}.skillUsed`,
+    name: `projects.${index}.projectDescription`,
     control: form.control,
   });
 
   return (
     <div>
-      <FormLabel>Skill Used</FormLabel>
+      <FormLabel>Project Description</FormLabel>
       <ul>
         {fields.length === 0 ? (
-          <>No Skill Used Given</>
+          <>No Project Description Given</>
         ) : (
           <>
-            {fields.map((skillUsed, skillUsedIndex) => {
+            {fields.map((projectDescription, projectDescriptionIndex) => {
               return (
-                <li key={skillUsed.id}>
+                <li key={projectDescription.id}>
                   <FormField
                     control={form.control}
-                    name={`experiences.${index}.skillUsed.${skillUsedIndex}`}
+                    name={`projects.${index}.projectDescription.${projectDescriptionIndex}`}
                     render={({}) => (
                       <FormItem>
-                        <h3>Skill Used #{skillUsedIndex + 1}</h3>
+                        <h3>Description #{projectDescriptionIndex + 1}</h3>
                         <div className="flex gap-2">
                           <input
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                            placeholder="Enter your skill used..."
+                            placeholder="Enter your project description..."
                             {...form.register(
-                              `experiences.${index}.skillUsed.${skillUsedIndex}.skill`
+                              `projects.${index}.projectDescription.${projectDescriptionIndex}.projectDescription`
                             )}
                           />
                           <Button
                             variant="destructive"
                             type="button"
                             onClick={() => {
-                              remove(skillUsedIndex);
+                              remove(projectDescriptionIndex);
                             }}
                           >
-                            Remove Skill Used
+                            Remove Description
                           </Button>
                         </div>
                         <div className="text-red-600">
                           <p className="text-sm font-medium text-destructive">
                             {
-                              form.formState.errors.experiences?.[index]
-                                ?.skillUsed?.[skillUsedIndex]?.skill?.message
+                              form.formState.errors.projects?.[index]
+                                ?.projectDescription?.[projectDescriptionIndex]
+                                ?.projectDescription?.message
                             }
                           </p>
                         </div>
@@ -72,7 +73,7 @@ export const SkillUsedForm = ({
       <Button
         type="button"
         variant="secondary"
-        onClick={() => append([skillUsedDefaultValue])}
+        onClick={() => append([projectDescriptionDefaultValue])}
       >
         Add
       </Button>
