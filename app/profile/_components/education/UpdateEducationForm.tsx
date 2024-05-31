@@ -1,5 +1,5 @@
 "use client";
-import { updateEducation } from "@/actions/handler";
+import { updateEducation } from "@/actions/update-education";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {

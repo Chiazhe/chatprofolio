@@ -2,18 +2,18 @@
 import { z } from "zod";
 
 const workDescriptions = z.object({
-  workDescription: z.string(),
+  workDescription: z.string().min(1),
 });
 
 const skillUsed = z.object({
-  skill: z.string(),
+  skill: z.string().min(1),
 });
 
 const experienceSchema = z
   .object({
     id: z.number().optional(),
-    companyName: z.string().min(2).max(50),
-    title: z.string().min(2).max(50),
+    companyName: z.string().min(1).max(50),
+    title: z.string().min(1).max(50),
     workDescription: z.array(workDescriptions),
     skillUsed: z.array(skillUsed),
     companyLogo: z.string(),
@@ -23,7 +23,7 @@ const experienceSchema = z
   .refine((data) => {
     if (data.startDate && data.endDate) {
       return (
-        data.endDate > data.startDate,
+        data.endDate.getTime() > data.startDate.getTime(),
         {
           message: "End date cannot be earlier than start date.",
           path: ["endDate"],

@@ -25,6 +25,9 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import { WorkDescriptionForm } from "./WorkDescriptionForm";
+import { SkillUsedForm } from "./SkillUsedForm";
+import { updateExperience } from "@/actions/update-experience";
 
 type Props = {
   existingExperiences: ExperienceFormType["experiences"];
@@ -55,12 +58,13 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
 
   function onSubmit(values: ExperienceFormType) {
     console.log(values);
+    updateExperience(values);
   }
 
   return (
     <Form {...form}>
-      <Button onClick={() => console.log(form.formState.errors)}>Check</Button>
-      <Button onClick={() => console.log(form.getValues())}>Check Val</Button>
+      {/* <Button onClick={() => console.log(form.formState.errors)}>Check</Button>
+      <Button onClick={() => console.log(form.getValues())}>Check Val</Button> */}
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <ul className="flex flex-col gap-16 w-[80%] mx-auto">
           {fields.map((education, index) => {
@@ -101,7 +105,9 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                     </FormItem>
                   )}
                 />
-                {/* Title */}
+                <WorkDescriptionForm form={form} index={index} />
+                <SkillUsedForm form={form} index={index} />
+                {/* Company Logo */}
                 <FormField
                   control={form.control}
                   name={`experiences.${index}.companyLogo`}
@@ -199,6 +205,17 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                       </FormItem>
                     )}
                   />
+                </div>
+                <div>
+                  <Button
+                    variant="destructive"
+                    type="button"
+                    onClick={() => {
+                      remove(index);
+                    }}
+                  >
+                    Remove Experience
+                  </Button>
                 </div>
               </li>
             );
