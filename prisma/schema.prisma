@@ -24,9 +24,10 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  Education Education[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  Education      Education[]
+  WorkExperience Experience[]
 
   @@map("users")
 }
@@ -89,4 +90,20 @@ model Education {
 
   @@index([holderId])
   @@map("education")
+}
+
+model Experience {
+  id              Int       @id @default(autoincrement())
+  companyName     String
+  title           String
+  workDescription String[]
+  skillUsed       String[]
+  companyLogo     String?
+  startDate       DateTime?
+  endDate         DateTime?
+  holder          User      @relation(fields: [holderId], references: [id])
+  holderId        String
+
+  @@index([holderId])
+  @@map("experience")
 }

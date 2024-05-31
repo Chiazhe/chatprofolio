@@ -3,9 +3,9 @@
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import { convertEducationDataToBackend } from "@/lib/helper";
-import { EducationType } from "@/lib/zodSchema/education";
+import { EducationFormType } from "@/lib/zodSchema/education";
 
-export const updateEducation = async (educations: EducationType) => {
+export const updateEducation = async (educations: EducationFormType) => {
   const session = await auth();
   const user = session?.user;
 

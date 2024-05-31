@@ -1,14 +1,19 @@
 import {
-  EducationType,
+  EducationFormType,
   RelevantCourseType,
   SpecializationType,
 } from "./zodSchema/education";
-import type { Education } from "@prisma/client";
+import type { Education, Experience } from "@prisma/client";
+import {
+  ExperienceFormType,
+  SkillUsedType,
+  WorkDescriptionType,
+} from "./zodSchema/experience";
 
 export const convertEducationDataFromBackend = (
   databaseEducationType: Education[]
 ) => {
-  const frontendEducationData: EducationType["educations"] = [];
+  const frontendEducationData: EducationFormType["educations"] = [];
   for (let i = 0; i < databaseEducationType.length; i++) {
     const education = databaseEducationType[i];
     // in string[]
@@ -41,7 +46,7 @@ export const convertEducationDataFromBackend = (
 };
 
 export const convertEducationDataToBackend = (
-  frontendEducationData: EducationType["educations"],
+  frontendEducationData: EducationFormType["educations"],
   userId: string
 ) => {
   const databaseEducationType: Education[] = [];
@@ -74,4 +79,75 @@ export const convertEducationDataToBackend = (
   }
 
   return databaseEducationType;
+};
+
+export const convertExperienceDataFromBackend = (
+  databaseExperienceType: Experience[]
+) => {
+  const frontendExperienceData: ExperienceFormType["experiences"] = [];
+  for (let i = 0; i < databaseExperienceType.length; i++) {
+    const experience = databaseExperienceType[i];
+    // in string[]
+    const skillUsed = experience.skillUsed;
+
+    // convert to {specialization: string}[]
+    const skillUsedData: SkillUsedType[] = [];
+    for (const skill of skillUsed) {
+      skillUsedData.push({ skill: skill });
+    }
+
+    // in string[]
+    const workDescriptions = experience.workDescription;
+
+    // convert to {specialization: string}[]
+    const workDescriptionData: WorkDescriptionType[] = [];
+    for (const workDescription of workDescriptions) {
+      workDescriptionData.push({ workDescription: workDescription });
+    }
+
+    frontendExperienceData.push({
+      ...experience,
+      skillUsed: skillUsedData,
+      workDescription: workDescriptionData,
+      companyLogo: experience.companyLogo as string,
+    });
+  }
+
+  return frontendExperienceData;
+};
+
+export const convertExperienceDataToBackend = (
+  frontendExperienceData: ExperienceFormType["experiences"],
+  userId: string
+) => {
+  const databaseExperienceType: Experience[] = [];
+
+  for (let i = 0; i < frontendExperienceData.length; i++) {
+    const experience = frontendExperienceData[i];
+    // in {specialization: string}[]
+    const workDescriptions = experience.workDescription;
+
+    const workDescriptionData: string[] = [];
+    for (const workDescription of workDescriptions) {
+      workDescriptionData.push(workDescription.workDescription);
+    }
+
+    // in {specialization: string}[]
+    const skillUsed = experience.skillUsed;
+
+    const skillUsedData: string[] = [];
+    for (const skill of skillUsed) {
+      skillUsedData.push(skill.skill);
+    }
+
+    databaseExperienceType.push({
+      ...experience,
+      workDescription: workDescriptionData,
+      skillUsed: skillUsedData,
+      holderId: userId,
+      id: experience.id ? experience.id : -1,
+    });
+  }
+
+  return databaseExperienceType;
 };

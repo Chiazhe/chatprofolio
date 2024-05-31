@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { EducationType } from "@/lib/zodSchema/education";
+import { EducationFormType } from "@/lib/zodSchema/education";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 
 const relevantCourseDefaultValue = { relevantCourse: "" };
@@ -9,7 +9,7 @@ export const RelevantCourseForm = ({
   form,
   index,
 }: {
-  form: UseFormReturn<EducationType>;
+  form: UseFormReturn<EducationFormType>;
   index: number;
 }) => {
   const { append, remove, fields } = useFieldArray({

@@ -1,5 +1,4 @@
 "use client";
-import { updateEducation } from "@/actions/update-education";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -18,67 +17,70 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import {
-  educationFormSchema,
-  EducationFormType,
-} from "@/lib/zodSchema/education";
+  experienceFormSchema,
+  ExperienceFormType,
+} from "@/lib/zodSchema/experience";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
+import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import { SpecializationForm } from "./SpecializationForm";
-import { RelevantCourseForm } from "./RelevantCourseForm";
+import { WorkDescriptionForm } from "./WorkDescriptionForm";
+import { SkillUsedForm } from "./SkillUsedForm";
+import { updateExperience } from "@/actions/update-experience";
 
 type Props = {
-  existingEducations: EducationFormType["educations"];
+  existingExperiences: ExperienceFormType["experiences"];
 };
 
 const defaultValues = {
-  institution: "",
-  degree: "",
-  fieldOfStudy: "",
-  specialization: [],
-  relevantCourses: [],
-  grade: "",
+  companyName: "",
+  title: "",
+  workDescription: [],
+  skillUsed: [],
+  companyLogo: "",
   startDate: null,
   endDate: null,
 };
 
-const UpdateEducationForm = ({ existingEducations }: Props) => {
-  const form = useForm<EducationFormType>({
-    resolver: zodResolver(educationFormSchema),
+const UpdateExperienceForm = ({ existingExperiences }: Props) => {
+  const form = useForm<ExperienceFormType>({
+    resolver: zodResolver(experienceFormSchema),
     defaultValues: {
-      educations: existingEducations,
+      experiences: existingExperiences,
     },
   });
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "educations",
+    name: "experiences",
   });
 
-  function onSubmit(values: EducationFormType) {
+  function onSubmit(values: ExperienceFormType) {
     console.log(values);
-    updateEducation(values);
+    updateExperience(values);
   }
 
   return (
     <Form {...form}>
+      {/* <Button onClick={() => console.log(form.formState.errors)}>Check</Button>
+      <Button onClick={() => console.log(form.getValues())}>Check Val</Button> */}
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <ul className="flex flex-col gap-16 w-[80%] mx-auto">
           {fields.map((education, index) => {
             return (
               <li key={education.id} className="flex flex-col gap-2">
-                <h3>Education #{index + 1}</h3>
-                {/* Institution name */}
+                <h3>Experience #{index + 1}</h3>
+                {/* Company name */}
                 <FormField
                   control={form.control}
-                  name={`educations.${index}.institution`}
+                  name={`experiences.${index}.companyName`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>School name</FormLabel>
+                      <FormLabel>Company name</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Enter your school name..."
+                          placeholder="Enter your company name..."
                           {...field}
                         />
                       </FormControl>
@@ -86,30 +88,16 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                     </FormItem>
                   )}
                 />
-                {/* Education Type */}
+                {/* Title */}
                 <FormField
                   control={form.control}
-                  name={`educations.${index}.degree`}
+                  name={`experiences.${index}.title`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Degree</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter degree type..." {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* Field of Study */}
-                <FormField
-                  control={form.control}
-                  name={`educations.${index}.fieldOfStudy`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Field of Study</FormLabel>
+                      <FormLabel>Title</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Enter your field of study..."
+                          placeholder="Enter your job title..."
                           {...field}
                         />
                       </FormControl>
@@ -117,20 +105,19 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                     </FormItem>
                   )}
                 />
-                <SpecializationForm form={form} index={index} />
-                <RelevantCourseForm form={form} index={index} />
-                {/* Grade */}
+                <WorkDescriptionForm form={form} index={index} />
+                <SkillUsedForm form={form} index={index} />
+                {/* Company Logo */}
                 <FormField
                   control={form.control}
-                  name={`educations.${index}.grade`}
+                  name={`experiences.${index}.companyLogo`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Grade</FormLabel>
+                      <FormLabel>Company Logo</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Enter your grade..."
+                          placeholder="Enter your company logo..."
                           {...field}
-                          type="text"
                         />
                       </FormControl>
                       <FormMessage />
@@ -141,7 +128,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                   {/* Start Date */}
                   <FormField
                     control={form.control}
-                    name={`educations.${index}.startDate`}
+                    name={`experiences.${index}.startDate`}
                     render={({ field }) => (
                       <FormItem className="flex flex-col w-full">
                         <FormLabel>Start Date</FormLabel>
@@ -181,7 +168,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                   {/* End Date */}
                   <FormField
                     control={form.control}
-                    name={`educations.${index}.endDate`}
+                    name={`experiences.${index}.endDate`}
                     render={({ field }) => (
                       <FormItem className="flex flex-col w-full">
                         <FormLabel>End Date</FormLabel>
@@ -227,7 +214,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                       remove(index);
                     }}
                   >
-                    Remove education
+                    Remove Experience
                   </Button>
                 </div>
               </li>
@@ -243,4 +230,4 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
   );
 };
 
-export default UpdateEducationForm;
+export default UpdateExperienceForm;
