@@ -3,7 +3,12 @@ import {
   RelevantCourseType,
   SpecializationType,
 } from "./zodSchema/education";
-import type { Education, Experience, Project } from "@prisma/client";
+import type {
+  Achievement,
+  Education,
+  Experience,
+  Project,
+} from "@prisma/client";
 import {
   ExperienceFormType,
   SkillUsedType,
@@ -11,10 +16,13 @@ import {
 } from "./zodSchema/experience";
 import {
   ProjectDescriptionType,
-  ProjectFormType,
   ProjectType,
   TechnologyUsedType,
 } from "./zodSchema/project";
+import {
+  AchievementDescriptionType,
+  AchievementType,
+} from "./zodSchema/achievement";
 
 export const convertEducationDataFromBackend = (
   databaseEducationData: Education[]
@@ -229,4 +237,56 @@ export const convertProjectDataToBackend = (
   }
 
   return databaseProjectType;
+};
+
+export const convertAchievementDataFromBackend = (
+  databaseAchievementData: Achievement[]
+) => {
+  const frontendAchievementData: AchievementType[] = [];
+  for (let i = 0; i < databaseAchievementData.length; i++) {
+    const achievement = databaseAchievementData[i];
+
+    // in string[]
+    const achievementDescriptions = achievement.achievementDescription;
+
+    // convert to {specialization: string}[]
+    const achievementDescriptionData: AchievementDescriptionType[] = [];
+    for (const achievementDescription of achievementDescriptions) {
+      achievementDescriptionData.push({ description: achievementDescription });
+    }
+
+    frontendAchievementData.push({
+      ...achievement,
+      achievementDescription: achievementDescriptionData,
+    });
+  }
+
+  return frontendAchievementData;
+};
+
+export const convertAchievementDataToBackend = (
+  frontendAchievementData: AchievementType[],
+  userId: string
+) => {
+  const databaseAchievementData: Achievement[] = [];
+
+  for (let i = 0; i < frontendAchievementData.length; i++) {
+    const achievement = frontendAchievementData[i];
+    // in {specialization: string}[]
+    const achievementDescriptions = achievement.achievementDescription;
+
+    const achievementDescriptionData: string[] = [];
+    for (const achievementDescription of achievementDescriptions) {
+      achievementDescriptionData.push(achievementDescription.description);
+    }
+
+    databaseAchievementData.push({
+      ...achievement,
+      achievementDescription: achievementDescriptionData,
+      holderId: userId,
+      id: achievement.id ? achievement.id : -1,
+    });
+  }
+
+  return databaseAchievementData;
 };

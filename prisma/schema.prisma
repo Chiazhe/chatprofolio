@@ -24,11 +24,12 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
   Education      Education[]
   WorkExperience Experience[]
   Project        Project[]
+  Achievement    Achievement[]
 
   @@map("users")
 }
@@ -124,4 +125,17 @@ model Project {
 
   @@index([holderId])
   @@map("project")
+}
+
+model Achievement {
+  id                     Int       @id @default(autoincrement())
+  achievementTitle       String
+  achievementProvider    String
+  achievementDescription String[]
+  achievementExpiry      DateTime?
+  holder                 User      @relation(fields: [holderId], references: [id])
+  holderId               String
+
+  @@index([holderId])
+  @@map("achievement")
 }
