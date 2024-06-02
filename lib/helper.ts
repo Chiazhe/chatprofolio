@@ -8,6 +8,7 @@ import type {
   Education,
   Experience,
   Project,
+  Skill,
 } from "@prisma/client";
 import {
   ExperienceFormType,
@@ -23,6 +24,7 @@ import {
   AchievementDescriptionType,
   AchievementType,
 } from "./zodSchema/achievement";
+import { SkillFormType, SkillType } from "./zodSchema/skill";
 
 export const convertEducationDataFromBackend = (
   databaseEducationData: Education[]
@@ -289,4 +291,38 @@ export const convertAchievementDataToBackend = (
   }
 
   return databaseAchievementData;
+};
+
+export const convertSkillDataFromBackend = (databaseSkillData: Skill[]) => {
+  const frontendSkillData: SkillFormType["skills"] = [];
+  for (let i = 0; i < databaseSkillData.length; i++) {
+    const skill = databaseSkillData[i];
+
+    frontendSkillData.push({
+      ...skill,
+      skillRating: skill.skillRating as string,
+      skillYearsOfExperience: skill.skillYearsOfExperience as unknown as number,
+    });
+  }
+
+  return frontendSkillData;
+};
+
+export const convertSkillDataToBackend = (
+  frontendSkillData: SkillType[],
+  userId: string
+) => {
+  const databaseSkillData: Skill[] = [];
+
+  for (let i = 0; i < frontendSkillData.length; i++) {
+    const skill = frontendSkillData[i];
+
+    databaseSkillData.push({
+      ...skill,
+      holderId: userId,
+      id: skill.id ? skill.id : -1,
+    });
+  }
+
+  return databaseSkillData;
 };
