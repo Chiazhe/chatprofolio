@@ -31,6 +31,7 @@ model User {
   Project        Project[]
   Achievement    Achievement[]
   Skill          Skill[]
+  Contact        Contact[]
 
   @@map("users")
 }
@@ -151,4 +152,24 @@ model Skill {
 
   @@index([holderId])
   @@map("skill")
+}
+
+model Contact {
+  id           Int    @id @default(autoincrement())
+  leetcode     String
+  hackerRank   String
+  github       String
+  email        String
+  linkedIn     String
+  instagram    String
+  twitter      String
+  facebook     String
+  youtube      String
+  mediumDigest String
+  phoneNumber  String
+  holder       User   @relation(fields: [holderId], references: [id])
+  holderId     String
+
+  @@index([holderId])
+  @@map("contact")
 }

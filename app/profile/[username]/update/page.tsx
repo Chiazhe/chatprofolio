@@ -3,6 +3,7 @@ import UpdateExperience from "../../_components/experience/UpdateExperience";
 import UpdateAchievement from "../../_components/achievement/UpdateAchievement";
 import UpdateProject from "../../_components/project/UpdateProject";
 import UpdateSkill from "../../_components/skill/UpdateSkill";
+import UpdateContact from "../../_components/contact/UpdateContact";
 
 const page = ({ params: { username } }: { params: { username: string } }) => {
   return (
@@ -11,8 +12,9 @@ const page = ({ params: { username } }: { params: { username: string } }) => {
       {/* <UpdateEducationComponent username={username} />
       <UpdateExperience username={username} />
       <UpdateProject username={username} />
-      <UpdateAchievement username={username} /> */}
-      <UpdateSkill username={username} />
+      <UpdateAchievement username={username} />
+      <UpdateSkill username={username} /> */}
+      <UpdateContact username={username} />
     </div>
   );
 };
