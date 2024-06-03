@@ -11,12 +11,12 @@ const page = ({ params: { username } }: { params: { username: string } }) => {
     <div>
       <h1>Profile update</h1>
       <UpdateBasicInformation username={username} />
-      {/* <UpdateEducationComponent username={username} />
+      <UpdateEducationComponent username={username} />
       <UpdateExperience username={username} />
       <UpdateProject username={username} />
       <UpdateAchievement username={username} />
       <UpdateSkill username={username} />
-      <UpdateContact username={username} /> */}
+      <UpdateContact username={username} />
     </div>
   );
 };

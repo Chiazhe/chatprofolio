@@ -49,7 +49,6 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
 
   return (
     <Form {...form}>
-      <Button onClick={() => console.log(form.getValues())}>Check</Button>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <ul className="flex flex-col gap-16 w-[80%] mx-auto">
           {fields.map((skill, index) => {
@@ -77,19 +76,9 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
                       <FormLabel>Skill Year of experience</FormLabel>
                       <FormControl>
                         <Input
-                          type={"number"}
-                          min={0}
-                          max={100}
-                          inputMode="numeric"
+                          type="number"
                           placeholder="Enter your skill experience year..."
-                          autoComplete="off"
                           {...field}
-                          value={field.value ?? ""}
-                          onChange={(e) => {
-                            if (e.target.value === "")
-                              return field.onChange(undefined);
-                            field.onChange(Number(e.target.value));
-                          }}
                         />
                       </FormControl>
                       <FormMessage />
