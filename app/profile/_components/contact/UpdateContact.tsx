@@ -1,7 +1,6 @@
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
-import { convertAchievementDataFromBackend } from "@/lib/helper";
 import UpdateContactForm from "./UpdateContactForm";
 
 const UpdateContact = async ({ username }: { username: string }) => {

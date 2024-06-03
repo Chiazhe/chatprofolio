@@ -15,15 +15,20 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  username      String?   @unique
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-
+  id             String        @id @default(cuid())
+  name           String        @default("")
+  username       String        @unique
+  email          String        @unique
+  emailVerified  DateTime?
+  firstName      String        @default("")
+  lastName       String        @default("")
+  shortIntro     String        @default("")
+  mediumIntro    String        @default("")
+  longIntro      String        @default("")
+  userLocation   String        @default("")
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
   Education      Education[]

@@ -12,36 +12,36 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { ContactFormSchema, ContactFormType } from "@/lib/zodSchema/contact";
-import { updateContact } from "@/actions/update-contact";
+import {
+  BasicInformationFormSchema,
+  BasicInformationFormType,
+} from "@/lib/zodSchema/basicInformation";
+import { updateBasicInformation } from "@/actions/update-basic-information";
 
 type Props = {
-  contactData: ContactFormType | null;
+  basicInformationData: BasicInformationFormType | null;
 };
 
-const UpdateContactForm = ({ contactData }: Props) => {
-  const form = useForm<ContactFormType>({
-    resolver: zodResolver(ContactFormSchema),
-    defaultValues: contactData
-      ? contactData
+const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
+  const form = useForm<BasicInformationFormType>({
+    resolver: zodResolver(BasicInformationFormSchema),
+    defaultValues: basicInformationData
+      ? basicInformationData
       : {
-          leetcode: "",
-          hackerRank: "",
-          github: "",
-          email: "",
-          linkedIn: "",
-          instagram: "",
-          twitter: "",
-          facebook: "",
-          youtube: "",
-          mediumDigest: "",
-          phoneNumber: "",
+          name: "",
+          username: "",
+          firstName: "",
+          lastName: "",
+          shortIntro: "",
+          mediumIntro: "",
+          longIntro: "",
+          userLocation: "",
         },
   });
 
-  function onSubmit(values: ContactFormType) {
+  function onSubmit(values: BasicInformationFormType) {
     console.log(values);
-    updateContact(values);
+    updateBasicInformation(values);
   }
 
   return (
@@ -50,26 +50,13 @@ const UpdateContactForm = ({ contactData }: Props) => {
         <div className="w-[80%] mx-auto flex flex-col gap-2">
           <FormField
             control={form.control}
-            name="email"
+            name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your email..." {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="phoneNumber"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Username</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your Phone Number profile..."
+                    placeholder="Enter your preferred username..."
                     {...field}
                   />
                 </FormControl>
@@ -79,13 +66,52 @@ const UpdateContactForm = ({ contactData }: Props) => {
           />
           <FormField
             control={form.control}
-            name="github"
+            name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>GitHub</FormLabel>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>First Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your first name..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your last name..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="shortIntro"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Short Introduction</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your GitHub profile..."
+                    placeholder="Enter your short introduction..."
                     {...field}
                   />
                 </FormControl>
@@ -95,13 +121,13 @@ const UpdateContactForm = ({ contactData }: Props) => {
           />
           <FormField
             control={form.control}
-            name="linkedIn"
+            name="mediumIntro"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>LinkedIn</FormLabel>
+                <FormLabel>General Introduction</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your LinkedIn profile..."
+                    placeholder="Enter your general introduction..."
                     {...field}
                   />
                 </FormControl>
@@ -111,13 +137,13 @@ const UpdateContactForm = ({ contactData }: Props) => {
           />
           <FormField
             control={form.control}
-            name="leetcode"
+            name="longIntro"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>LeetCode</FormLabel>
+                <FormLabel>Detailed Introduction</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your LeetCode profile..."
+                    placeholder="Enter your detailed introduction..."
                     {...field}
                   />
                 </FormControl>
@@ -127,76 +153,12 @@ const UpdateContactForm = ({ contactData }: Props) => {
           />
           <FormField
             control={form.control}
-            name="hackerRank"
+            name="userLocation"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>HackerRank</FormLabel>
+                <FormLabel>Location</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Enter your HackerRank profile..."
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="instagram"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Instagram</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your Instagram profile..."
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="twitter"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>X</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your X profile..." {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="facebook"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Facebook</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your Facebook profile..."
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="youtube"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>YouTube</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your YouTube profile..."
-                    {...field}
-                  />
+                  <Input placeholder="Enter your location..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -209,4 +171,4 @@ const UpdateContactForm = ({ contactData }: Props) => {
   );
 };
 
-export default UpdateContactForm;
+export default UpdateBasicInformationForm;

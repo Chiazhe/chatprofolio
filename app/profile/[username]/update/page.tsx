@@ -4,17 +4,19 @@ import UpdateAchievement from "../../_components/achievement/UpdateAchievement";
 import UpdateProject from "../../_components/project/UpdateProject";
 import UpdateSkill from "../../_components/skill/UpdateSkill";
 import UpdateContact from "../../_components/contact/UpdateContact";
+import UpdateBasicInformation from "../../_components/basicInformation/UpdateBasicInformation";
 
 const page = ({ params: { username } }: { params: { username: string } }) => {
   return (
     <div>
       <h1>Profile update</h1>
+      <UpdateBasicInformation username={username} />
       {/* <UpdateEducationComponent username={username} />
       <UpdateExperience username={username} />
       <UpdateProject username={username} />
       <UpdateAchievement username={username} />
-      <UpdateSkill username={username} /> */}
-      <UpdateContact username={username} />
+      <UpdateSkill username={username} />
+      <UpdateContact username={username} /> */}
     </div>
   );
 };
