@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import UpdateExperienceForm from "./UpdateExperienceForm";
-import { convertSkillDataFromBackend } from "@/lib/helper";
+import { convertExperienceDataFromBackend } from "@/lib/helper";
 
 const UpdateExperience = async ({ username }: { username: string }) => {
   const session = await auth();
@@ -19,7 +19,7 @@ const UpdateExperience = async ({ username }: { username: string }) => {
       },
     });
 
-    return convertSkillDataFromBackend(experienceData);
+    return convertExperienceDataFromBackend(experienceData);
   };
 
   return (
