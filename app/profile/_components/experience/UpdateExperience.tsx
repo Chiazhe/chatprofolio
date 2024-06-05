@@ -24,7 +24,6 @@ const UpdateExperience = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Experience</h2>
       <UpdateExperienceForm existingExperiences={await getUserExperience()} />
     </div>
   );

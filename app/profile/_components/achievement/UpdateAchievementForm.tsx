@@ -64,7 +64,7 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
           {fields.map((achievement, index) => {
             return (
               <li key={achievement.id} className="flex flex-col gap-2">
-                <h3>Project #{index + 1}</h3>
+                <h3>Achievement #{index + 1}</h3>
                 <FormField
                   control={form.control}
                   name={`achievements.${index}.achievementTitle`}

@@ -23,7 +23,6 @@ const UpdateContact = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Contact</h2>
       <UpdateContactForm contactData={await getContact()} />
     </div>
   );

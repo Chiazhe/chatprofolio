@@ -24,7 +24,6 @@ const UpdateAchievement = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Achievement</h2>
       <UpdateAchievementForm existingAchievements={await getUserProject()} />
     </div>
   );

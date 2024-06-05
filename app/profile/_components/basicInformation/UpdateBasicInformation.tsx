@@ -21,7 +21,6 @@ const UpdateBasicInformation = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Contact</h2>
       <UpdateBasicInformationForm
         basicInformationData={await getBasicInformation()}
       />

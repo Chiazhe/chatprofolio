@@ -24,7 +24,6 @@ const UpdateSkill = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Skill</h2>
       <UpdateSkillForm existingSkills={await getUserSkill()} />
     </div>
   );

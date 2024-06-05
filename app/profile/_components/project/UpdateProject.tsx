@@ -24,7 +24,6 @@ const UpdateProject = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Project</h2>
       <UpdateProjectForm existingProjects={await getUserProject()} />
     </div>
   );
