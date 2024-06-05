@@ -7,7 +7,7 @@ type Props = {
 
 const UpdateFieldHeading = ({ title, description }: Props) => {
   return (
-    <div className="max-w-[300px]">
+    <div className="w-[250px]">
       <h2 className="font-bold text-2xl mb-2">{title}</h2>
       <p className="text-sm text-gray-700 dark:text-gray-300">{description}</p>
     </div>

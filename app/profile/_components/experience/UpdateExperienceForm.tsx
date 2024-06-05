@@ -63,8 +63,6 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
 
   return (
     <Form {...form}>
-      {/* <Button onClick={() => console.log(form.formState.errors)}>Check</Button>
-      <Button onClick={() => console.log(form.getValues())}>Check Val</Button> */}
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <ul className="flex flex-col gap-16 w-[80%] mx-auto">
           {fields.map((education, index) => {

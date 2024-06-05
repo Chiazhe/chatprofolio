@@ -1,8 +1,35 @@
-import UpdateContact from "@/app/profile/_components/contact/UpdateContact";
+import UpdateContactForm from "@/app/profile/_components/contact/UpdateContactForm";
+import { auth } from "@/lib/auth";
+import prisma from "@/lib/db";
 import React from "react";
 
-const page = ({ params: { username } }: { params: { username: string } }) => {
-  return <UpdateContact username={username} />;
+const page = async ({
+  params: { username },
+}: {
+  params: { username: string };
+}) => {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user || user.username !== username) return <div>Unauthorized</div>;
+
+  const getContact = async () => {
+    const achievementData = await prisma.contact.findFirst({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return achievementData;
+  };
+
+  return (
+    <div>
+      <UpdateContactForm contactData={await getContact()} />
+    </div>
+  );
 };
 
 export default page;
