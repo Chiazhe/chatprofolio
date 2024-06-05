@@ -27,6 +27,7 @@ import { format } from "date-fns";
 import { useFieldArray, useForm } from "react-hook-form";
 import { SpecializationForm } from "./SpecializationForm";
 import { RelevantCourseForm } from "./RelevantCourseForm";
+import { IoTrashOutline } from "react-icons/io5";
 
 type Props = {
   existingEducations: EducationFormType["educations"];
@@ -68,7 +69,6 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
           {fields.map((education, index) => {
             return (
               <li key={education.id} className="flex flex-col gap-2">
-                <h3>Education #{index + 1}</h3>
                 {/* Institution name */}
                 <FormField
                   control={form.control}
@@ -227,7 +227,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                       remove(index);
                     }}
                   >
-                    Remove education
+                    <IoTrashOutline />
                   </Button>
                 </div>
               </li>

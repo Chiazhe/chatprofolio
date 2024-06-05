@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Educations"
         description="Please insert your education history."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

@@ -27,6 +27,7 @@ import {
 } from "@/lib/zodSchema/achievement";
 import { AchievementDescriptionForm } from "./AchievementDescriptionForm";
 import { updateAchievement } from "@/actions/update-achievement";
+import { IoTrashOutline } from "react-icons/io5";
 
 type Props = {
   existingAchievements: AchievementFormType["achievements"];
@@ -60,11 +61,10 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ul className="flex flex-col gap-16 w-[80%] mx-auto">
+        <ul className="flex flex-col gap-16">
           {fields.map((achievement, index) => {
             return (
               <li key={achievement.id} className="flex flex-col gap-2">
-                <h3>Achievement #{index + 1}</h3>
                 <FormField
                   control={form.control}
                   name={`achievements.${index}.achievementTitle`}
@@ -145,7 +145,7 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
                       remove(index);
                     }}
                   >
-                    Remove Achievement
+                    <IoTrashOutline />
                   </Button>
                 </div>
               </li>

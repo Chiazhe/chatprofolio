@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Skills"
         description="List your relevant skills, including technical skills, soft skills, and language proficiency."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

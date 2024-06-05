@@ -47,7 +47,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="w-[80%] mx-auto flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <FormField
             control={form.control}
             name="email"

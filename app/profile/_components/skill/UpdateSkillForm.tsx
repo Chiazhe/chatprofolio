@@ -18,6 +18,7 @@ import {
   SkillType,
 } from "@/lib/zodSchema/skill";
 import { updateSkill } from "@/actions/update-skill";
+import { IoTrashOutline } from "react-icons/io5";
 
 type Props = {
   existingSkills: SkillType[];
@@ -50,11 +51,10 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ul className="flex flex-col gap-16 w-[80%] mx-auto">
+        <ul className="flex flex-col gap-16">
           {fields.map((skill, index) => {
             return (
               <li key={skill.id} className="flex flex-col gap-2">
-                <h3>Skill #{index + 1}</h3>
                 <FormField
                   control={form.control}
                   name={`skills.${index}.skillName`}
@@ -106,7 +106,7 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
                       remove(index);
                     }}
                   >
-                    Remove Skill
+                    <IoTrashOutline />
                   </Button>
                 </div>
               </li>

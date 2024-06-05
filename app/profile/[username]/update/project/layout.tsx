@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Projects"
         description="List any projects you have worked on."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

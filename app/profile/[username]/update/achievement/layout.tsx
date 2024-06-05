@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Achivements"
         description="List any notable achievements, awards, or recognition."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Profile"
         description="Please introduce yourself."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

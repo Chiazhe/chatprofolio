@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Experiences"
         description="List your previous work experience."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

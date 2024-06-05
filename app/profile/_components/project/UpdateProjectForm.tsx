@@ -25,6 +25,7 @@ import { projectFormSchema, ProjectFormType } from "@/lib/zodSchema/project";
 import { ProjectDescriptionForm } from "./ProjectDescriptionForm";
 import { TechnologyUsedForm } from "./TechnologyUsedForm";
 import { updateProject } from "@/actions/update-project";
+import { IoTrashOutline } from "react-icons/io5";
 
 type Props = {
   existingProjects: ProjectFormType["projects"];
@@ -62,11 +63,10 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ul className="flex flex-col gap-16 w-[80%] mx-auto">
+        <ul className="flex flex-col gap-16">
           {fields.map((education, index) => {
             return (
               <li key={education.id} className="flex flex-col gap-2">
-                <h3>Project #{index + 1}</h3>
                 <FormField
                   control={form.control}
                   name={`projects.${index}.projectTitle`}
@@ -223,7 +223,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                       remove(index);
                     }}
                   >
-                    Remove Project
+                    <IoTrashOutline />
                   </Button>
                 </div>
               </li>

@@ -11,7 +11,7 @@ export default function ProfileUpdateLayout({
         title="Contacts"
         description="Please provide your contact details."
       />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </>
   );
 }

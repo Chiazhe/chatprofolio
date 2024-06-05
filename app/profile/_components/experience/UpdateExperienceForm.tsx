@@ -28,6 +28,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { WorkDescriptionForm } from "./WorkDescriptionForm";
 import { SkillUsedForm } from "./SkillUsedForm";
 import { updateExperience } from "@/actions/update-experience";
+import { IoTrashOutline } from "react-icons/io5";
 
 type Props = {
   existingExperiences: ExperienceFormType["experiences"];
@@ -64,11 +65,10 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ul className="flex flex-col gap-16 w-[80%] mx-auto">
+        <ul className="flex flex-col gap-16">
           {fields.map((education, index) => {
             return (
               <li key={education.id} className="flex flex-col gap-2">
-                <h3>Experience #{index + 1}</h3>
                 {/* Company name */}
                 <FormField
                   control={form.control}
@@ -212,7 +212,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                       remove(index);
                     }}
                   >
-                    Remove Experience
+                    <IoTrashOutline />
                   </Button>
                 </div>
               </li>
