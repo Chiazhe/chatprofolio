@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { AchievementFormType } from "@/lib/zodSchema/achievement";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { IoMdAdd } from "react-icons/io";
 import { IoTrashOutline } from "react-icons/io5";
 
 const achievementDescriptionDefaultValue = { description: "" };
@@ -72,10 +73,10 @@ export const AchievementDescriptionForm = ({
       </ul>
       <Button
         type="button"
-        variant="secondary"
+        variant="outline"
         onClick={() => append([achievementDescriptionDefaultValue])}
       >
-        Add
+        <IoMdAdd /> Add
       </Button>
     </div>
   );

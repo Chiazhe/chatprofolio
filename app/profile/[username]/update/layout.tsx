@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import ProfileBreadcrumb from "../../_components/ProfileBreadcrumb";
+import { Separator } from "@/components/ui/separator";
 
 export default function ProfileUpdateLayout({
   children,
@@ -14,8 +15,8 @@ export default function ProfileUpdateLayout({
           <div className="py-4">
             <ProfileBreadcrumb />
           </div>
-          <hr />
-          <div className="flex flex-col md:flex-row gap-4 py-4 w-full">
+          <Separator className="mb-2" />
+          <div className="flex flex-col md:flex-row gap-4 w-full">
             {children}
           </div>
         </div>

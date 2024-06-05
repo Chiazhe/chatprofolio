@@ -28,6 +28,8 @@ import {
 import { AchievementDescriptionForm } from "./AchievementDescriptionForm";
 import { updateAchievement } from "@/actions/update-achievement";
 import { IoTrashOutline } from "react-icons/io5";
+import { IoMdAdd } from "react-icons/io";
+import { Separator } from "@/components/ui/separator";
 
 type Props = {
   existingAchievements: AchievementFormType["achievements"];
@@ -61,102 +63,116 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ul className="flex flex-col gap-16">
+        <ul className="flex flex-col gap-4">
           {fields.map((achievement, index) => {
             return (
-              <li key={achievement.id} className="flex flex-col gap-2">
-                <FormField
-                  control={form.control}
-                  name={`achievements.${index}.achievementTitle`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Achievement Title</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter your achievement title..."
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name={`achievements.${index}.achievementProvider`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Achievement Provider</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter your achievement provider..."
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <AchievementDescriptionForm form={form} index={index} />
-                <FormField
-                  control={form.control}
-                  name={`achievements.${index}.achievementExpiry`}
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col w-full">
-                      <FormLabel>Achievement Expiry</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value as Date}
-                            onSelect={field.onChange}
-                            disabled={(date) => date < new Date("1900-01-01")}
-                            initialFocus
+              <>
+                <li
+                  key={achievement.id}
+                  className="flex flex-col gap-2 hover:bg-zinc-50 dark:hover:bg-slate-900 p-8"
+                >
+                  <FormField
+                    control={form.control}
+                    name={`achievements.${index}.achievementTitle`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Achievement Title</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your achievement title..."
+                            {...field}
                           />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <div>
-                  <Button
-                    variant="destructive"
-                    type="button"
-                    onClick={() => {
-                      remove(index);
-                    }}
-                  >
-                    <IoTrashOutline />
-                  </Button>
-                </div>
-              </li>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name={`achievements.${index}.achievementProvider`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Achievement Provider</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your achievement provider..."
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <AchievementDescriptionForm form={form} index={index} />
+                  <FormField
+                    control={form.control}
+                    name={`achievements.${index}.achievementExpiry`}
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col w-full">
+                        <FormLabel>Achievement Expiry</FormLabel>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant={"outline"}
+                                className={cn(
+                                  "w-full pl-3 text-left font-normal",
+                                  !field.value && "text-muted-foreground"
+                                )}
+                              >
+                                {field.value ? (
+                                  format(field.value, "PPP")
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="start">
+                            <Calendar
+                              mode="single"
+                              selected={field.value as Date}
+                              onSelect={field.onChange}
+                              disabled={(date) => date < new Date("1900-01-01")}
+                              initialFocus
+                            />
+                          </PopoverContent>
+                        </Popover>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="my-4">
+                    <Button
+                      variant="destructive"
+                      type="button"
+                      onClick={() => {
+                        remove(index);
+                      }}
+                    >
+                      <IoTrashOutline />
+                    </Button>
+                  </div>
+                </li>
+                {index !== fields.length - 1 && <Separator className="" />}
+              </>
             );
           })}
         </ul>
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-between items-center my-4">
+          <Button
+            variant="outline"
+            type="button"
+            onClick={() => append(defaultValues)}
+          >
+            <IoMdAdd /> Add
+          </Button>
+          <Button type="submit" className="">
+            Update
+          </Button>
+        </div>
       </form>
-      <Button variant="secondary" onClick={() => append(defaultValues)}>
-        Add
-      </Button>
     </Form>
   );
 };

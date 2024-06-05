@@ -47,7 +47,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 hover:bg-zinc-50 dark:hover:bg-slate-900 p-8">
           <FormField
             control={form.control}
             name="email"
@@ -203,7 +203,9 @@ const UpdateContactForm = ({ contactData }: Props) => {
             )}
           />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="my-4">
+          Update
+        </Button>
       </form>
     </Form>
   );

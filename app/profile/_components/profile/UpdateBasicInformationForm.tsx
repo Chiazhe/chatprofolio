@@ -17,6 +17,7 @@ import {
   BasicInformationFormType,
 } from "@/lib/zodSchema/basicInformation";
 import { updateBasicInformation } from "@/actions/update-basic-information";
+import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
   basicInformationData: BasicInformationFormType | null;
@@ -47,7 +48,7 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 hover:bg-zinc-50 dark:hover:bg-slate-900 p-8">
           <FormField
             control={form.control}
             name="username"
@@ -126,7 +127,7 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
               <FormItem>
                 <FormLabel>General Introduction</FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
                     placeholder="Enter your general introduction..."
                     {...field}
                   />
@@ -140,9 +141,10 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
             name="longIntro"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Detailed Introduction</FormLabel>
+                <FormLabel>Overview</FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
+                    className="h-[150px]"
                     placeholder="Enter your detailed introduction..."
                     {...field}
                   />
@@ -165,7 +167,9 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
             )}
           />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="my-4">
+          Update
+        </Button>
       </form>
     </Form>
   );

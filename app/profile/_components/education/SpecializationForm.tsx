@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { EducationFormType } from "@/lib/zodSchema/education";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { IoMdAdd } from "react-icons/io";
 import { IoTrashOutline } from "react-icons/io5";
 
 const specializationDefaultValue = { specialization: "" };
@@ -72,10 +73,10 @@ export const SpecializationForm = ({
       </ul>
       <Button
         type="button"
-        variant="secondary"
+        variant="outline"
         onClick={() => append([specializationDefaultValue])}
       >
-        Add
+        <IoMdAdd /> Add
       </Button>
     </div>
   );

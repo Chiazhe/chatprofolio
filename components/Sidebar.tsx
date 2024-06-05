@@ -67,7 +67,7 @@ const Sidebar = ({}: Props) => {
   ];
 
   return (
-    <div className="w-[250px] flex flex-col gap-[2px] p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div className="w-[250px] flex flex-col gap-[2px] p-4 bg-zinc-100 dark:bg-slate-900">
       <h1 className="font-semibold text-lg mb-2 py-1 px-2">User Information</h1>
       {items.map((item) => (
         <ProfileNavigationButton

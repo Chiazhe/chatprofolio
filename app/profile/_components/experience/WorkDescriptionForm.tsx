@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { ExperienceFormType } from "@/lib/zodSchema/experience";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { IoMdAdd } from "react-icons/io";
 import { IoTrashOutline } from "react-icons/io5";
 
 const workDescriptionDefaultValue = { workDescription: "" };
@@ -72,10 +73,10 @@ export const WorkDescriptionForm = ({
       </ul>
       <Button
         type="button"
-        variant="secondary"
+        variant="outline"
         onClick={() => append([workDescriptionDefaultValue])}
       >
-        Add
+        <IoMdAdd /> Add
       </Button>
     </div>
   );
