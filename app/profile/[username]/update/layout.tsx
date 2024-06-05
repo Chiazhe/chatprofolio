@@ -6,9 +6,9 @@ export default function ProfileUpdateLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex w-[100vw] min-h-[100vh]">
       <Sidebar />
-      <main>{children}</main>
+      <main className="w-full">{children}</main>
     </div>
   );
 }

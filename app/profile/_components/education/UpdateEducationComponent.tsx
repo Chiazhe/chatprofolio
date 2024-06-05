@@ -24,7 +24,6 @@ const UpdateEducationComponent = async ({ username }: { username: string }) => {
 
   return (
     <div>
-      <h2>Update Education Component</h2>
       <UpdateEducationForm existingEducations={await getUserSpecialization()} />
     </div>
   );

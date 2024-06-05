@@ -64,7 +64,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ul className="flex flex-col gap-16 w-[80%] mx-auto">
+        <ul className="flex flex-col gap-16 w-full">
           {fields.map((education, index) => {
             return (
               <li key={education.id} className="flex flex-col gap-2">
