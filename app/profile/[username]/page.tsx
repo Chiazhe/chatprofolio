@@ -2,6 +2,13 @@ import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 import React from "react";
+import About from "./_component/About";
+import Experience from "./_component/Experience";
+import Education from "./_component/Education";
+import Project from "./_component/Project";
+import Skill from "./_component/Skill";
+import Achievement from "./_component/Achievement";
+import Contact from "./_component/Contact";
 
 const page = async ({
   params: { username },
@@ -13,12 +20,13 @@ const page = async ({
 
   return (
     <div>
-      <div>{username.toUpperCase()} profile</div>
-      {username === user?.username && (
-        <Button>
-          <Link href={`/profile/${username}/update`}>Update</Link>
-        </Button>
-      )}
+      <About />
+      <Experience />
+      <Education />
+      <Project />
+      <Skill />
+      <Achievement />
+      <Contact />
     </div>
   );
 };
