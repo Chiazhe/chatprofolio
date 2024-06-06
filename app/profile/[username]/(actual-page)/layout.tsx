@@ -76,7 +76,7 @@ export default async function ProfileUpdateLayout({
   return (
     <div className="flex w-full">
       <FloatingNav navItems={navItems} />
-      <main className="">{children}</main>
+      <main className="w-full">{children}</main>
     </div>
   );
 }
