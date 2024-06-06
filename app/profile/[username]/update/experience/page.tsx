@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import { convertExperienceDataFromBackend } from "@/lib/helper";
-import UpdateExperienceForm from "@/app/profile/_components/experience/UpdateExperienceForm";
+import UpdateExperienceForm from "@/app/profile/[username]/update/_components/experience/UpdateExperienceForm";
 
 const page = async ({
   params: { username },

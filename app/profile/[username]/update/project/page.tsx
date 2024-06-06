@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import { convertProjectDataFromBackend } from "@/lib/helper";
-import UpdateProjectForm from "@/app/profile/_components/project/UpdateProjectForm";
+import UpdateProjectForm from "@/app/profile/[username]/update/_components/project/UpdateProjectForm";
 
 const page = async ({
   params: { username },

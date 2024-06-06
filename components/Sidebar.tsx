@@ -1,6 +1,6 @@
 "use client";
 
-import ProfileNavigationButton from "@/app/profile/_components/ProfileNavigationButton";
+import ProfileNavigationButton from "@/app/profile/[username]/update/_components/ProfileNavigationButton";
 import { useParams, usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React from "react";

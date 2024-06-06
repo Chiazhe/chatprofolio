@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import { convertAchievementDataFromBackend } from "@/lib/helper";
-import UpdateAchievementForm from "@/app/profile/_components/achievement/UpdateAchievementForm";
+import UpdateAchievementForm from "@/app/profile/[username]/update/_components/achievement/UpdateAchievementForm";
 
 const page = async ({
   params: { username },

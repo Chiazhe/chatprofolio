@@ -1,4 +1,4 @@
-import UpdateBasicInformationForm from "@/app/profile/_components/profile/UpdateBasicInformationForm";
+import UpdateBasicInformationForm from "@/app/profile/[username]/update/_components/profile/UpdateBasicInformationForm";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";

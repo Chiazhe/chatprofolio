@@ -1,5 +1,5 @@
 import Sidebar from "@/components/Sidebar";
-import ProfileBreadcrumb from "../../_components/ProfileBreadcrumb";
+import ProfileBreadcrumb from "./_components/ProfileBreadcrumb";
 import { Separator } from "@/components/ui/separator";
 
 export default function ProfileUpdateLayout({

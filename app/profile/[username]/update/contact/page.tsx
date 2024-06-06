@@ -1,4 +1,4 @@
-import UpdateContactForm from "@/app/profile/_components/contact/UpdateContactForm";
+import UpdateContactForm from "@/app/profile/[username]/update/_components/contact/UpdateContactForm";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
