@@ -23,10 +23,22 @@ const page = async ({
     return contactData;
   };
 
+  const getUserExperience = async () => {
+    const experienceData = await prisma.experience.findMany({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return experienceData;
+  };
+
   return (
     <div className="w-full">
       <About data={await getBasicInformation()} />
-      <Experience />
+      <Experience data={await getUserExperience()} />
       <Education />
       <Project />
       <Skill />

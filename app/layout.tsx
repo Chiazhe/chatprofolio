@@ -36,7 +36,7 @@ export default function RootLayout({
           ]}
         >
           <div className="min-h-screen">{children}</div>
-          <ThemeToggler className="absolute top-6 right-6" />
+          <ThemeToggler className="fixed right-6 top-6" />
         </ThemeProvider>
       </body>
     </html>
