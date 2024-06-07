@@ -5,6 +5,7 @@ import { twMerge } from "tailwind-merge";
 import Heading, { HeadingDescription } from "./ui/Heading";
 import { Experience as ExperienceData } from "@prisma/client";
 import { Button } from "@/components/ui/moving-border";
+import { DateTime } from "luxon";
 
 type Props = {
   data: ExperienceData[] | null;
@@ -32,9 +33,31 @@ const Experience = ({ data }: Props) => {
               <div className="flex flex-col gap-4 p-6 text-left md:p-8">
                 <div>
                   <h1 className="text-3xl font-semibold">{experience.title}</h1>
-                  <h1 className="text-xl font-extrabold text-primary">
+                  <h1 className="mb-2 text-xl font-extrabold text-primary">
                     {experience.companyName}
                   </h1>
+                  <div className="animate-shimmer inline-flex rounded-lg border border-primary/50 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 py-1 font-bold text-primary/80 transition-colors">
+                    {DateTime.fromJSDate(experience.startDate as Date).toFormat(
+                      "MMMM yyyy",
+                    )}{" "}
+                    -{" "}
+                    {experience.endDate
+                      ? DateTime.fromJSDate(experience.endDate).toFormat(
+                          "MMMM yyyy",
+                        )
+                      : "Present"}
+                  </div>
+                  {/* <div className="inline-flex rounded-full bg-secondary px-4 py-1">
+                    {DateTime.fromJSDate(experience.startDate as Date).toFormat(
+                      "MMMM yyyy",
+                    )}{" "}
+                    -{" "}
+                    {experience.endDate
+                      ? DateTime.fromJSDate(experience.endDate).toFormat(
+                          "MMMM yyyy",
+                        )
+                      : "Present"}
+                  </div> */}
                 </div>
                 <div>
                   <ul className="flex list-disc flex-col gap-2">
@@ -55,7 +78,6 @@ const Experience = ({ data }: Props) => {
                     ))}
                   </ul>
                 </div>
-                <div>{JSON.stringify(experience.startDate)}</div>
               </div>
             </Button>
           ))}

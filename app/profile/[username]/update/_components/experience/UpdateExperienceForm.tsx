@@ -73,7 +73,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
               <>
                 <li
                   key={education.id}
-                  className="flex flex-col gap-2 hover:bg-primary/10  p-8"
+                  className="flex flex-col gap-2 p-8 hover:bg-primary/10"
                 >
                   <FormField
                     control={form.control}
@@ -130,7 +130,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                       control={form.control}
                       name={`experiences.${index}.startDate`}
                       render={({ field }) => (
-                        <FormItem className="flex flex-col w-full">
+                        <FormItem className="flex w-full flex-col">
                           <FormLabel>Start Date</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
@@ -139,7 +139,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                                   variant={"outline"}
                                   className={cn(
                                     "w-full pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
+                                    !field.value && "text-muted-foreground",
                                   )}
                                 >
                                   {field.value ? (
@@ -157,12 +157,18 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                             >
                               <Calendar
                                 mode="single"
+                                captionLayout="dropdown-buttons"
                                 selected={field.value as Date}
                                 onSelect={field.onChange}
-                                disabled={(date) =>
-                                  date < new Date("1900-01-01")
-                                }
-                                initialFocus
+                                fromYear={1960}
+                                toYear={2030}
+                                // mode="single"
+                                // selected={field.value as Date}
+                                // onSelect={field.onChange}
+                                // disabled={(date) =>
+                                //   date < new Date("1900-01-01")
+                                // }
+                                // initialFocus
                               />
                             </PopoverContent>
                           </Popover>
@@ -174,7 +180,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                       control={form.control}
                       name={`experiences.${index}.endDate`}
                       render={({ field }) => (
-                        <FormItem className="flex flex-col w-full">
+                        <FormItem className="flex w-full flex-col">
                           <FormLabel>End Date</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
@@ -183,7 +189,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                                   variant={"outline"}
                                   className={cn(
                                     "w-full pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
+                                    !field.value && "text-muted-foreground",
                                   )}
                                 >
                                   {field.value ? (
@@ -201,12 +207,18 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                             >
                               <Calendar
                                 mode="single"
+                                captionLayout="dropdown-buttons"
                                 selected={field.value as Date}
                                 onSelect={field.onChange}
-                                disabled={(date) =>
-                                  date < new Date("1900-01-01")
-                                }
-                                initialFocus
+                                fromYear={1960}
+                                toYear={2030}
+                                // mode="single"
+                                // selected={field.value as Date}
+                                // onSelect={field.onChange}
+                                // disabled={(date) =>
+                                //   date < new Date("1900-01-01")
+                                // }
+                                // initialFocus
                               />
                             </PopoverContent>
                           </Popover>
@@ -232,7 +244,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
             );
           })}
         </ul>
-        <div className="flex justify-between items-center my-4">
+        <div className="my-4 flex items-center justify-between">
           <Button
             variant="outline"
             type="button"
