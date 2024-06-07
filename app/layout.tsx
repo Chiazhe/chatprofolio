@@ -24,6 +24,16 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          themes={[
+            "blue",
+            "zinc",
+            "rose",
+            "green",
+            "orange",
+            "red",
+            "violet",
+            "yellow",
+          ]}
         >
           <div className="min-h-screen">{children}</div>
           <ThemeToggler className="absolute top-6 right-6" />

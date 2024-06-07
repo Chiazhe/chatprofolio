@@ -48,7 +48,7 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-2 hover:bg-zinc-50 dark:hover:bg-slate-900 p-8">
+        <div className="flex flex-col gap-2 hover:bg-primary/10  p-8">
           <FormField
             control={form.control}
             name="username"

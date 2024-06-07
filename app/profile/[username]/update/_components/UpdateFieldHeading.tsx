@@ -8,8 +8,8 @@ type Props = {
 const UpdateFieldHeading = ({ title, description }: Props) => {
   return (
     <div className="w-[300px] py-8">
-      <h2 className="font-bold text-2xl mb-2">{title}</h2>
-      <p className="text-sm text-gray-700 dark:text-gray-300">{description}</p>
+      <h2 className="font-extrabold text-2xl mb-2 text-primary">{title}</h2>
+      <p className="text-sm text-primary/80">{description}</p>
     </div>
   );
 };

@@ -71,7 +71,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
               <>
                 <li
                   key={education.id}
-                  className="flex flex-col gap-2 hover:bg-zinc-50 dark:hover:bg-slate-900 p-8"
+                  className="flex flex-col gap-2 hover:bg-primary/10  p-8"
                 >
                   <FormField
                     control={form.control}

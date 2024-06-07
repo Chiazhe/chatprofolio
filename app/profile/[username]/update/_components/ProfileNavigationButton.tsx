@@ -11,9 +11,10 @@ const ProfileNavigationButton = ({ title, action, isActive, icon }: Props) => {
   return (
     <div
       onClick={action}
-      className={`${
-        isActive && "bg-zinc-200 dark:bg-slate-800  font-semibold"
-      } py-1 px-2 rounded hover:bg-zinc-200 hover:cursor-pointer dark:hover:bg-slate-800 flex items-center gap-2`}
+      className={`py-1 px-2 rounded flex items-center gap-2
+            hover:bg-primary/75 hover:cursor-pointer ${
+              isActive && "bg-primary/75 font-semibold"
+            }`}
     >
       <span>{icon}</span>
       {title}

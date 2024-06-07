@@ -15,7 +15,7 @@ export function ThemeToggler({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const { setTheme } = useTheme();
+  const { setTheme, themes } = useTheme();
 
   return (
     <div className={className} {...props}>
@@ -28,15 +28,11 @@ export function ThemeToggler({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setTheme("light")}>
-            Light
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("dark")}>
-            Dark
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("system")}>
-            System
-          </DropdownMenuItem>
+          {themes.map((theme) => (
+            <DropdownMenuItem key={theme} onClick={() => setTheme(theme)}>
+              {theme}
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
