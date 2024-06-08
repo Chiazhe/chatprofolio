@@ -59,16 +59,32 @@ const page = async ({
     return projectData;
   };
 
+  const getUserSkill = async () => {
+    const skillData = await prisma.skill.findMany({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return skillData;
+  };
+
   return (
-    <div className="w-full px-8 sm:px-12 md:px-20">
-      <About data={await getBasicInformation()} />
-      <Experience data={await getUserExperience()} />
-      <Education data={await getUserEducation()} />
-      <Project data={await getUserProject()} />
-      <Skill />
-      <Achievement />
-      <Contact />
-    </div>
+    <>
+      <div className="flex w-full flex-col gap-48 px-8 sm:px-12 md:px-20">
+        <About data={await getBasicInformation()} />
+        <Experience data={await getUserExperience()} />
+        <Education data={await getUserEducation()} />
+        <Project data={await getUserProject()} />
+      </div>
+      <Skill data={await getUserSkill()} />
+      <div className="w-full px-8 sm:px-12 md:px-20">
+        {/* <Achievement /> */}
+        <Contact />
+      </div>
+    </>
   );
 };
 

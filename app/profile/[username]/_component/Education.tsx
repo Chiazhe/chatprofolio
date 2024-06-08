@@ -12,7 +12,7 @@ const Education = ({ data }: Props) => {
   return (
     <div
       id="education"
-      className="flex w-full flex-col items-center justify-center py-32"
+      className="flex w-full flex-col items-center justify-center"
     >
       <div className="mb-8 text-center">
         <HeadingDescription text="WHERE I HAVE GAINED MY KNOWLEDGE." />

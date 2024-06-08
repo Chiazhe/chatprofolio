@@ -14,7 +14,7 @@ const Project = ({ data }: Props) => {
   return (
     <div
       id="project"
-      className="flex w-full flex-col items-center justify-center py-32"
+      className="flex w-full flex-col items-center justify-center"
     >
       <div className="mb-8 text-center">
         <HeadingDescription text="WHAT I HAVE CREATED AND BUILT." />
@@ -35,7 +35,7 @@ const Project = ({ data }: Props) => {
                   />
                 </CardItem>
               )}
-              <CardItem translateZ="100" className="text-xl font-bold">
+              <CardItem translateZ="100" className="text-2xl font-bold">
                 {project.projectTitle}
               </CardItem>
               {project.projectDescription.map((description, descIndex) => (

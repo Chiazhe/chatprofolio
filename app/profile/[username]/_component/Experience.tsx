@@ -15,7 +15,7 @@ const Experience = ({ data }: Props) => {
   return (
     <div
       id="experience"
-      className="flex w-full flex-col items-center justify-center py-32"
+      className="flex w-full flex-col items-center justify-center"
     >
       <div className="mb-8 text-center">
         <HeadingDescription text="WHAT I HAVE DONE SO FAR" />

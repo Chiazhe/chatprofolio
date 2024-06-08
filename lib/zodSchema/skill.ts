@@ -6,7 +6,7 @@ const SkillSchema = z.object({
   id: z.number().optional(),
   skillName: z.string().min(1).max(50),
   skillYearsOfExperience: z.coerce.number().int().min(0).max(100),
-  skillRating: z.string().max(10),
+  skillRating: z.string().max(20),
 });
 
 export const SkillFormSchema = z.object({

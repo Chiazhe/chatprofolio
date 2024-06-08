@@ -12,7 +12,7 @@ const About = ({ data }: Props) => {
   return (
     <div
       id="about"
-      className="relative mx-auto flex w-full flex-col justify-center gap-24 bg-background px-8 py-20 md:flex-row md:px-24"
+      className="relative mx-auto mt-20 flex w-full flex-col justify-center gap-24 bg-background px-8 md:flex-row md:px-24"
     >
       <div className="flex w-full gap-8 md:min-w-[400px] md:max-w-[500px]">
         <div className="flex flex-col items-center justify-center">

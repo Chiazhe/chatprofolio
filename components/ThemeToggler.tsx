@@ -28,11 +28,13 @@ export function ThemeToggler({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          {themes.map((theme) => (
-            <DropdownMenuItem key={theme} onClick={() => setTheme(theme)}>
-              {theme}
-            </DropdownMenuItem>
-          ))}
+          {themes
+            .filter((theme) => !(theme === "system"))
+            .map((theme) => (
+              <DropdownMenuItem key={theme} onClick={() => setTheme(theme)}>
+                {theme}
+              </DropdownMenuItem>
+            ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
