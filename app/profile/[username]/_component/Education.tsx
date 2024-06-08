@@ -16,12 +16,12 @@ const Education = ({ data }: Props) => {
     >
       <div className="mb-8 text-center">
         <HeadingDescription text="WHERE I HAVE GAINED MY KNOWLEDGE." />
-        <Heading text="Education." />
+        <Heading text="Educations." />
       </div>
       {data?.map((education, index) => (
         <div key={`education-${index}`} className="w-full">
           <WobbleCard
-            containerClassName="h-full bg-card w-full max-w-[700px]"
+            containerClassName="h-full bg-primary/10 w-full max-w-[700px]"
             className=""
           >
             <div className="flex flex-col gap-4">

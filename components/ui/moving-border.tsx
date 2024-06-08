@@ -44,7 +44,7 @@ export function Button({
         className="absolute inset-0 rounded-[1.75rem]"
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
-        <MovingBorder duration={duration} rx="30%" ry="30%">
+        <MovingBorder duration={duration} rx="0%" ry="0%">
           <div
             className={cn(
               "h-20 w-20 bg-[radial-gradient(hsl(var(--primary))_40%,transparent_60%)] opacity-[0.8]",
@@ -56,7 +56,7 @@ export function Button({
 
       <div
         className={cn(
-          "relative flex h-full border border-primary/30 bg-card text-sm antialiased backdrop-blur-xl",
+          "relative flex h-full items-center justify-center border border-primary/30 bg-primary/10 text-sm antialiased backdrop-blur-xl",
           className,
         )}
         style={{
