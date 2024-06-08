@@ -14,7 +14,7 @@ const page = async ({
 
   if (!user || user.username !== username) return <div>Unauthorized</div>;
 
-  const getUserSpecialization = async () => {
+  const getUserEducation = async () => {
     const educationData = await prisma.education.findMany({
       where: {
         holder: {
@@ -28,7 +28,7 @@ const page = async ({
 
   return (
     <div>
-      <UpdateEducationForm existingEducations={await getUserSpecialization()} />
+      <UpdateEducationForm existingEducations={await getUserEducation()} />
     </div>
   );
 };

@@ -162,13 +162,6 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                                 onSelect={field.onChange}
                                 fromYear={1960}
                                 toYear={2030}
-                                // mode="single"
-                                // selected={field.value as Date}
-                                // onSelect={field.onChange}
-                                // disabled={(date) =>
-                                //   date < new Date("1900-01-01")
-                                // }
-                                // initialFocus
                               />
                             </PopoverContent>
                           </Popover>
@@ -212,13 +205,6 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                                 onSelect={field.onChange}
                                 fromYear={1960}
                                 toYear={2030}
-                                // mode="single"
-                                // selected={field.value as Date}
-                                // onSelect={field.onChange}
-                                // disabled={(date) =>
-                                //   date < new Date("1900-01-01")
-                                // }
-                                // initialFocus
                               />
                             </PopoverContent>
                           </Popover>

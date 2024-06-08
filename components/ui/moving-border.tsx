@@ -41,7 +41,7 @@ export function Button({
       {...otherProps}
     >
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 rounded-[1.75rem]"
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
         <MovingBorder duration={duration} rx="30%" ry="30%">

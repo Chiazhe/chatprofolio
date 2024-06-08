@@ -73,7 +73,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
               <>
                 <li
                   key={education.id}
-                  className="flex flex-col gap-2 hover:bg-primary/10  p-8"
+                  className="flex flex-col gap-2 p-8 hover:bg-primary/10"
                 >
                   {/* Institution name */}
                   <FormField
@@ -152,7 +152,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                       control={form.control}
                       name={`educations.${index}.startDate`}
                       render={({ field }) => (
-                        <FormItem className="flex flex-col w-full">
+                        <FormItem className="flex w-full flex-col">
                           <FormLabel>Start Date</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
@@ -161,7 +161,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                                   variant={"outline"}
                                   className={cn(
                                     "w-full pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
+                                    !field.value && "text-muted-foreground",
                                   )}
                                 >
                                   {field.value ? (
@@ -179,11 +179,11 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                             >
                               <Calendar
                                 mode="single"
+                                captionLayout="dropdown-buttons"
                                 selected={field.value as Date}
                                 onSelect={field.onChange}
-                                disabled={(date) =>
-                                  date < new Date("1900-01-01")
-                                }
+                                fromYear={1960}
+                                toYear={2030}
                                 initialFocus
                               />
                             </PopoverContent>
@@ -197,7 +197,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                       control={form.control}
                       name={`educations.${index}.endDate`}
                       render={({ field }) => (
-                        <FormItem className="flex flex-col w-full">
+                        <FormItem className="flex w-full flex-col">
                           <FormLabel>End Date</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
@@ -206,7 +206,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                                   variant={"outline"}
                                   className={cn(
                                     "w-full pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
+                                    !field.value && "text-muted-foreground",
                                   )}
                                 >
                                   {field.value ? (
@@ -224,11 +224,11 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                             >
                               <Calendar
                                 mode="single"
+                                captionLayout="dropdown-buttons"
                                 selected={field.value as Date}
                                 onSelect={field.onChange}
-                                disabled={(date) =>
-                                  date < new Date("1900-01-01")
-                                }
+                                fromYear={1960}
+                                toYear={2030}
                                 initialFocus
                               />
                             </PopoverContent>
@@ -255,7 +255,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
             );
           })}
         </ul>
-        <div className="flex justify-between items-center my-4">
+        <div className="my-4 flex items-center justify-between">
           <Button
             variant="outline"
             type="button"

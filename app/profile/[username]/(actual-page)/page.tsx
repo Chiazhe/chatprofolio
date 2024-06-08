@@ -35,11 +35,23 @@ const page = async ({
     return experienceData;
   };
 
+  const getUserEducation = async () => {
+    const educationData = await prisma.education.findMany({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return educationData;
+  };
+
   return (
-    <div className="w-full">
+    <div className="w-full px-8 sm:px-12 md:px-20">
       <About data={await getBasicInformation()} />
       <Experience data={await getUserExperience()} />
-      <Education />
+      <Education data={await getUserEducation()} />
       <Project />
       <Skill />
       <Achievement />
