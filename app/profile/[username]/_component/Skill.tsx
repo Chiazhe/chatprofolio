@@ -36,13 +36,13 @@ const Skill = ({ data }: Props) => {
         <Heading text="Skills." />
       </div>
       <InfiniteMovingCards items={data || []} direction="left" speed="normal" />
-      {/* {secondData && (
+      {secondData && (
         <InfiniteMovingCards
           items={secondData}
           direction="right"
           speed="normal"
         />
-      )} */}
+      )}
     </div>
   );
 };

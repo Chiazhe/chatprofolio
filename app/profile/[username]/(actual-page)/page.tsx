@@ -87,22 +87,21 @@ const page = async ({
 
   return (
     <>
-      <div className="flex w-full flex-col gap-48 px-8 sm:px-12 md:px-20">
-        <>
-          <About
-            data={await getBasicInformation()}
-            contactData={await getContact()}
-          />
-          <BackgroundBeams />
-        </>
+      <div className="flex w-full flex-col gap-28 px-8 sm:px-12 md:gap-48 md:px-20">
+        <About
+          data={await getBasicInformation()}
+          contactData={await getContact()}
+        />
+        <BackgroundBeams />
         <Experience data={await getUserExperience()} />
         <Education data={await getUserEducation()} />
         <Project data={await getUserProject()} />
       </div>
       <Skill data={await getUserSkill()} />
-      <div className="w-full px-8 sm:px-12 md:px-20">
+      <div className="relative w-full px-8 sm:px-12 md:px-20">
         {/* <Contact /> */}
         <Footer />
+        <BackgroundBeams />
       </div>
     </>
   );
