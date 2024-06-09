@@ -29,20 +29,20 @@ const Skill = ({ data }: Props) => {
   return (
     <div
       id="skill"
-      className="my-48 flex w-screen flex-col items-center justify-center"
+      className="my-48 flex max-w-full flex-col items-center justify-center overflow-hidden"
     >
       <div className="mb-8 text-center">
         <HeadingDescription text="WHAT I EXCEL AT." />
         <Heading text="Skills." />
       </div>
       <InfiniteMovingCards items={data || []} direction="left" speed="normal" />
-      {secondData && (
+      {/* {secondData && (
         <InfiniteMovingCards
           items={secondData}
           direction="right"
           speed="normal"
         />
-      )}
+      )} */}
     </div>
   );
 };

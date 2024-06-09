@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/assets/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
     domains: ["api.microlink.io"],
   },

@@ -14,7 +14,7 @@ const page = async ({
   if (!user || user.username !== username) return <div>Unauthorized</div>;
 
   const getContact = async () => {
-    const achievementData = await prisma.contact.findFirst({
+    const contactData = await prisma.contact.findFirst({
       where: {
         holder: {
           username: username,
@@ -22,7 +22,7 @@ const page = async ({
       },
     });
 
-    return achievementData;
+    return contactData;
   };
 
   return (

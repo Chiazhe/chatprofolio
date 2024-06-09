@@ -7,6 +7,8 @@ import Skill from "../_component/Skill";
 import Achievement from "../_component/Achievement";
 import Contact from "../_component/Contact";
 import prisma from "@/lib/db";
+import { BackgroundBeams } from "@/components/ui/background-beam";
+import Footer from "../_component/Footer";
 
 const page = async ({
   params: { username },
@@ -71,18 +73,36 @@ const page = async ({
     return skillData;
   };
 
+  const getContact = async () => {
+    const contactData = await prisma.contact.findFirst({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return contactData;
+  };
+
   return (
     <>
       <div className="flex w-full flex-col gap-48 px-8 sm:px-12 md:px-20">
-        <About data={await getBasicInformation()} />
+        <>
+          <About
+            data={await getBasicInformation()}
+            contactData={await getContact()}
+          />
+          <BackgroundBeams />
+        </>
         <Experience data={await getUserExperience()} />
         <Education data={await getUserEducation()} />
         <Project data={await getUserProject()} />
       </div>
       <Skill data={await getUserSkill()} />
       <div className="w-full px-8 sm:px-12 md:px-20">
-        {/* <Achievement /> */}
-        <Contact />
+        {/* <Contact /> */}
+        <Footer />
       </div>
     </>
   );
