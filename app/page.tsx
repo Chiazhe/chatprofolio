@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      {user ? (
+      {/* {user ? (
         <>
           {user.username}
           <form
@@ -35,7 +35,7 @@ export default async function Home() {
         >
           <Button type="submit">Sign In</Button>
         </form>
-      )}
+      )} */}
     </main>
   );
 }
