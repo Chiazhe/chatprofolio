@@ -76,7 +76,7 @@ const About = ({ data, contactData }: Props) => {
       </div>
       <div className="w-full md:min-w-[300px] md:max-w-[400px]">
         <div className="mb-8 text-center">
-          <HeadingDescription text="Introduction" />
+          <HeadingDescription text="INTRODUCTION" />
           <Heading text="Overview." />
         </div>
         <p className="text-gray-400">{data?.longIntro as string}</p>

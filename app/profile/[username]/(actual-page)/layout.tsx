@@ -49,20 +49,20 @@ export default async function ProfileUpdateLayout({
       link: `/profile/${username}/#skill`,
       icon: <GiSkills className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
-    {
-      name: "Achievement",
-      link: `/profile/${username}/#achievement`,
-      icon: (
-        <GrAchievement className="h-4 w-4 text-neutral-500 dark:text-white" />
-      ),
-    },
-    {
-      name: "Contact",
-      link: `/profile/${username}/#contact`,
-      icon: (
-        <RiContactsBook3Line className="h-4 w-4 text-neutral-500 dark:text-white" />
-      ),
-    },
+    // {
+    //   name: "Achievement",
+    //   link: `/profile/${username}/#achievement`,
+    //   icon: (
+    //     <GrAchievement className="h-4 w-4 text-neutral-500 dark:text-white" />
+    //   ),
+    // },
+    // {
+    //   name: "Contact",
+    //   link: `/profile/${username}/#contact`,
+    //   icon: (
+    //     <RiContactsBook3Line className="h-4 w-4 text-neutral-500 dark:text-white" />
+    //   ),
+    // },
   ];
 
   if (username === user?.username) {

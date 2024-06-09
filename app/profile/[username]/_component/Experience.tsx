@@ -27,7 +27,7 @@ const Experience = ({ data }: Props) => {
             <Button
               key={`experience-${index}`}
               className="flex flex-col"
-              duration={30000}
+              duration={Math.random() * (20000 - 15000) + 15000}
             >
               <div className="flex flex-col gap-4 p-6 text-left md:p-8">
                 <div>

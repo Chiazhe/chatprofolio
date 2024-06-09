@@ -9,6 +9,20 @@ import Contact from "../_component/Contact";
 import prisma from "@/lib/db";
 import { BackgroundBeams } from "@/components/ui/background-beam";
 import Footer from "../_component/Footer";
+import { Metadata } from "next";
+
+export async function generateMetadata(
+  {
+    params: { username },
+  }: {
+    params: { username: string };
+  },
+  // parent: ResolvingMetadata,
+): Promise<Metadata> {
+  return {
+    title: username,
+  };
+}
 
 const page = async ({
   params: { username },
