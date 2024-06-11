@@ -8,7 +8,7 @@ import Achievement from "../_component/Achievement";
 import Contact from "../_component/Contact";
 import prisma from "@/lib/db";
 import { BackgroundBeams } from "@/components/ui/background-beam";
-import Footer from "../_component/Footer";
+import Footer from "../../../../components/Footer";
 import { Metadata } from "next";
 
 export async function generateMetadata(
