@@ -9,7 +9,7 @@ export const BasicInformationFormSchema = z.object({
   lastName: z.string(),
   shortIntro: z.string().max(30),
   mediumIntro: z.string().max(100),
-  longIntro: z.string().max(500),
+  longIntro: z.string().max(1000),
   userLocation: z.string(),
 });
 

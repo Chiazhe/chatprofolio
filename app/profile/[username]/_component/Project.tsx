@@ -24,6 +24,9 @@ const Project = ({ data }: Props) => {
         {data?.map((project, index) => (
           <CardContainer key={`project-${index}`} className="inter-var">
             <CardBody className="group/card relative flex h-auto w-auto flex-col gap-4 rounded-xl border border-primary p-6 sm:w-[30rem]">
+              <CardItem translateZ="100" className="text-2xl font-bold">
+                {project.projectTitle}
+              </CardItem>
               {project.projectImage && (
                 <CardItem translateZ="120" className="mt-4 w-full">
                   <Image
@@ -35,9 +38,6 @@ const Project = ({ data }: Props) => {
                   />
                 </CardItem>
               )}
-              <CardItem translateZ="100" className="text-2xl font-bold">
-                {project.projectTitle}
-              </CardItem>
               {project.projectDescription.map((description, descIndex) => (
                 <CardItem
                   key={descIndex}
