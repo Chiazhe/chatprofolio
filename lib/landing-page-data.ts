@@ -1,4 +1,9 @@
-import { features } from "process";
+import {
+  artificialIntelligence,
+  painting,
+  template,
+  url,
+} from "@/assets/icons";
 
 export const data = {
   hero: {
@@ -9,26 +14,32 @@ export const data = {
     getStartedButton: "Get Started Now",
   },
   feature: {
-    featureOne: {
-      heading: "Customizable Profiles",
-      description:
-        "Tailor your profile with detailed work experience, education, skills, projects, and more. Choose from various layouts and color themes to match your personal style.",
-    },
-    featureTwo: {
-      heading: "Interactive AI",
-      description:
-        "Engage your visitors with an AI assistant that answers questions about your professional journey, making your profile more dynamic and informative.",
-    },
-    featureThree: {
-      heading: "Professional URLs",
-      description:
-        "Create a unique username that forms a professional URL for easy sharing on resumes and social media.",
-    },
-    featureFour: {
-      heading: "Portfolio Templates",
-      description:
-        "Choose from a variety of professionally designed templates tailored to different industries. Make your profile visually appealing and industry-appropriate.",
-    },
+    features: [
+      {
+        url: painting,
+        heading: "Customizable Profiles",
+        description:
+          "Tailor your profile with detailed work experience, education, skills, projects, and more. Choose from various layouts and color themes to match your personal style.",
+      },
+      {
+        url: artificialIntelligence,
+        heading: "Interactive AI",
+        description:
+          "Engage your visitors with an AI assistant that answers questions about your professional journey, making your profile more dynamic and informative.",
+      },
+      {
+        url: url,
+        heading: "Professional URLs",
+        description:
+          "Create a unique username that forms a professional URL for easy sharing on resumes and social media.",
+      },
+      {
+        url: template,
+        heading: "Portfolio Templates",
+        description:
+          "Choose from a variety of professionally designed templates tailored to different industries. Make your profile visually appealing and industry-appropriate.",
+      },
+    ],
   },
   userManual: {
     stepOne: {
