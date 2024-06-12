@@ -1,16 +1,34 @@
+import { features } from "process";
+
 export const data = {
   hero: {
-    headline: "Showcase Your Professional Journey with Style and Intelligence",
+    headline: "Showcase Your Professional Journey with ",
+    headlineHighlight: "Style and AI",
     subheadline:
-      "Create, customize, and share your professional portfolio with ease. Let AI enhance your profile to stand out from the crowd.",
-    getStartedButton: "Get Started for Free",
+      "Create, customize, and share your professional portfolio with ease.",
+    getStartedButton: "Get Started Now",
   },
   feature: {
-    description: [
-      "Tailor your profile with detailed work experience, education, skills, projects, and more. Choose from various layouts and color themes to match your personal style.",
-      "Engage your visitors with an AI assistant that answers questions about your professional journey, making your profile more dynamic and informative.",
-      "Create a unique username that forms a professional URL for easy sharing on resumes and social media.",
-    ],
+    featureOne: {
+      heading: "Customizable Profiles",
+      description:
+        "Tailor your profile with detailed work experience, education, skills, projects, and more. Choose from various layouts and color themes to match your personal style.",
+    },
+    featureTwo: {
+      heading: "Interactive AI",
+      description:
+        "Engage your visitors with an AI assistant that answers questions about your professional journey, making your profile more dynamic and informative.",
+    },
+    featureThree: {
+      heading: "Professional URLs",
+      description:
+        "Create a unique username that forms a professional URL for easy sharing on resumes and social media.",
+    },
+    featureFour: {
+      heading: "Portfolio Templates",
+      description:
+        "Choose from a variety of professionally designed templates tailored to different industries. Make your profile visually appealing and industry-appropriate.",
+    },
   },
   userManual: {
     stepOne: {

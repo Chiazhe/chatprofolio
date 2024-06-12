@@ -14,13 +14,15 @@ export default async function Home() {
   const users = await prisma.user.findMany();
 
   return (
-    <main className="">
+    <main>
       <Hero />
-      <Feature />
-      <UserManual />
-      <Pricing />
-      <Contact />
-      <Footer />
+      <div className="mx-12 sm:mx-16 md:mx-24">
+        <Feature />
+        <UserManual />
+        <Pricing />
+        <Contact />
+        <Footer />
+      </div>
       {/* {user ? (
         <>
           {user.username}
