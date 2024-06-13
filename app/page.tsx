@@ -16,14 +16,11 @@ export default async function Home() {
   return (
     <main>
       <Hero />
-      <div className="mx-12 flex flex-col gap-24 sm:mx-16 md:mx-24">
-        <Feature />
-
-        <UserManual />
-        <Pricing />
-        <Contact />
-        <Footer />
-      </div>
+      <Feature />
+      <UserManual />
+      <Pricing />
+      <Contact />
+      <Footer />
       {/* {user ? (
         <>
           {user.username}

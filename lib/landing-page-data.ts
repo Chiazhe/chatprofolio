@@ -42,22 +42,28 @@ export const data = {
     ],
   },
   userManual: {
-    stepOne: {
-      description:
-        "Create an account with just a few clicks and start building your profile.",
-    },
-    stepTwo: {
-      description:
-        "Set up your unique username, add your professional details and choose your preferred layout and theme.",
-    },
-    stepThree: {
-      description:
-        "Share your unique URL on resumes, social media, and professional networks.",
-    },
-    stepFour: {
-      description:
-        "Let visitors interact with your AI assistant to learn more about you.",
-    },
+    manual: [
+      {
+        title: "Step 1",
+        description:
+          "Create an account with just a few clicks and start building your profile.",
+      },
+      {
+        title: "Step 2",
+        description:
+          "Set up your unique username, add your professional details and choose your preferred layout and theme.",
+      },
+      {
+        title: "Step 3",
+        description:
+          "Share your unique URL on resumes, social media, and professional networks.",
+      },
+      {
+        title: "Step 4",
+        description:
+          "Let visitors interact with your AI assistant to learn more about you.",
+      },
+    ],
   },
   pricing: {},
   contact: {},
