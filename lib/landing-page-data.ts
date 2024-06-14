@@ -65,6 +65,13 @@ export const data = {
       },
     ],
   },
+  getStarted: {
+    main: "Show the world your skills.",
+    main2: " Start your profile now!",
+    secondary:
+      "Create your interactive portfolio today and impress others with a standout profile.",
+    button: "Get Started Now",
+  },
   pricing: {},
   contact: {},
 };

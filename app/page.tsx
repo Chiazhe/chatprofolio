@@ -7,6 +7,7 @@ import Pricing from "./_component/Pricing";
 import Footer from "@/components/Footer";
 import UserManual from "./_component/UserManual";
 import Contact from "./_component/Contact";
+import GetStarted from "./_component/GetStarted";
 
 export default async function Home() {
   const session = await auth();
@@ -18,36 +19,10 @@ export default async function Home() {
       <Hero />
       <Feature />
       <UserManual />
-      <Pricing />
-      <Contact />
-      <Footer />
-      {/* {user ? (
-        <>
-          {user.username}
-          <form
-            action={async () => {
-              "use server";
-              await signOut();
-            }}
-          >
-            <ul>
-              {users.map((u) => (
-                <li key={u.id}>{u.name}</li>
-              ))}
-            </ul>
-            <Button type="submit">Sign out</Button>
-          </form>
-        </>
-      ) : (
-        <form
-          action={async () => {
-            "use server";
-            await signIn();
-          }}
-        >
-          <Button type="submit">Sign In</Button>
-        </form>
-      )} */}
+      {/* <Pricing /> */}
+      <GetStarted />
+      {/* <Contact /> */}
+      <Footer className="bg-black" />
     </main>
   );
 }

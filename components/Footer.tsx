@@ -1,10 +1,13 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-type Props = {};
+type Props = {
+  className?: string;
+};
 
 const Footer = (props: Props) => {
   return (
-    <footer className="mb-20">
+    <footer className={cn("pb-20", props.className)}>
       <div className="flex items-center justify-center text-center text-sm font-thin">
         <p className="max-w-[300px]">
           Coded in{" "}

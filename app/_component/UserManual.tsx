@@ -9,12 +9,11 @@ type Props = {};
 
 const UserManual = (props: Props) => {
   return (
-    <div className="relative w-full px-12 py-32 bg-grid-white/[0.05] sm:px-16 md:px-20">
+    <div className="relative w-full bg-black px-12 py-32 sm:px-16 md:px-20">
       <h1 className="relative z-10 text-center text-5xl font-bold text-primary md:text-6xl">
-        User Manual.
+        But how to use our service?
       </h1>
       <div className="flex items-center justify-center">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-card [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black)]"></div>
         <div className="my-20 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
           {data.userManual.manual.map((manual, index) => (
             <Card
