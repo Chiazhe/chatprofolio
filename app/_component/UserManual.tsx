@@ -2,19 +2,26 @@
 
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { data } from "@/lib/landing-page-data";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
+import { lilita_one } from "../fonts";
 
 type Props = {};
 
 const UserManual = (props: Props) => {
   return (
     <div className="relative w-full bg-black px-12 py-32 sm:px-16 md:px-20">
-      <h1 className="relative z-10 text-center text-5xl font-bold text-primary md:text-6xl">
-        But how to use our service?
+      <h1
+        className={cn(
+          "relative z-10 text-center text-5xl font-bold text-primary md:text-6xl",
+          lilita_one.className,
+        )}
+      >
+        But How to Use Our Services?
       </h1>
       <div className="flex items-center justify-center">
-        <div className="my-20 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
+        <div className="mt-12 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
           {data.userManual.manual.map((manual, index) => (
             <Card
               title={manual.title}

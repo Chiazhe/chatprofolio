@@ -1,15 +1,21 @@
 import { data } from "@/lib/landing-page-data";
 import React from "react";
-import svg from "@/assets/icons/painting.svg";
 import Image from "next/image";
+import { lilita_one } from "../fonts";
+import { cn } from "@/lib/utils";
 
 type Props = {};
 
 const Feature = (props: Props) => {
   return (
     <div className="bg-black px-12 py-32 sm:px-16 md:px-20">
-      <h1 className="text-center text-5xl font-bold text-primary md:text-6xl">
-        Our Services.
+      <h1
+        className={cn(
+          "text-center text-5xl font-bold text-primary md:text-6xl",
+          lilita_one.className,
+        )}
+      >
+        The Service We Provides.
       </h1>
       <div className="mt-12 grid w-full grid-cols-1 gap-10 md:grid-cols-2">
         {data.feature.features.map((feature, index) => (

@@ -14,7 +14,7 @@ const GetStarted = (props: Props) => {
       baseHue={100}
       backgroundColor="black"
       className="flex h-full w-full flex-col items-center justify-center px-2 py-4 md:px-10"
-      containerClassName="px-12 py-32 sm:px-16 md:px-20"
+      containerClassName="px-12 py-32 md:py-48 sm:px-16 md:px-20"
     >
       <h2 className="text-center text-2xl font-bold text-white md:text-5xl">
         {data.getStarted.main2}
