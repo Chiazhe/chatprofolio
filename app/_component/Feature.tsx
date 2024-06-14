@@ -8,7 +8,7 @@ type Props = {};
 
 const Feature = (props: Props) => {
   return (
-    <div className="bg-black px-12 py-32 sm:px-16 md:px-20">
+    <div id="feature" className="bg-black px-12 py-32 sm:px-16 md:px-20">
       <h1
         className={cn(
           "text-center text-5xl font-bold text-primary md:text-6xl",

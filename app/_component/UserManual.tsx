@@ -11,7 +11,10 @@ type Props = {};
 
 const UserManual = (props: Props) => {
   return (
-    <div className="relative w-full bg-black px-12 py-32 sm:px-16 md:px-20">
+    <div
+      id="manual"
+      className="relative w-full bg-black px-12 py-32 sm:px-16 md:px-20"
+    >
       <h1
         className={cn(
           "relative z-10 text-center text-5xl font-bold text-primary md:text-6xl",

@@ -1,27 +1,49 @@
-import { Button } from "@/components/ui/button";
-import { auth, signIn, signOut } from "@/lib/auth";
-import prisma from "@/lib/db";
+import { auth } from "@/lib/auth";
 import Hero from "./_component/Hero";
 import Feature from "./_component/Feature";
-import Pricing from "./_component/Pricing";
 import Footer from "@/components/Footer";
 import UserManual from "./_component/UserManual";
-import Contact from "./_component/Contact";
 import GetStarted from "./_component/GetStarted";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { CgProfile } from "react-icons/cg";
+import { SlBookOpen } from "react-icons/sl";
+import { GrUserSettings } from "react-icons/gr";
 
+const navItems = [
+  {
+    name: "About",
+    link: `/#about`,
+    icon: <CgProfile className="h-4 w-4 text-white" />,
+  },
+  {
+    name: "Feature",
+    link: `/#feature`,
+    icon: <GrUserSettings className="h-4 w-4 text-white" />,
+  },
+  {
+    name: "Manual",
+    link: `/#manual`,
+    icon: <SlBookOpen className="h-4 w-4 text-white" />,
+  },
+  {
+    name: "Join",
+    link: `/#join-now`,
+    icon: <SlBookOpen className="h-4 w-4 text-white" />,
+  },
+];
 export default async function Home() {
   const session = await auth();
-  const user = session?.user;
-  const users = await prisma.user.findMany();
 
   return (
     <main>
+      <FloatingNav
+        navItems={navItems}
+        className="rounded-none bg-black text-lg"
+      />
       <Hero />
       <Feature />
       <UserManual />
-      {/* <Pricing /> */}
       <GetStarted />
-      {/* <Contact /> */}
       <Footer className="bg-black" />
     </main>
   );
