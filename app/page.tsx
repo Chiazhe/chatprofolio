@@ -1,41 +1,50 @@
-import { Button } from "@/components/ui/button";
-import { auth, signIn, signOut } from "@/lib/auth";
-import prisma from "@/lib/db";
+import { auth } from "@/lib/auth";
+import Hero from "./_component/Hero";
+import Feature from "./_component/Feature";
+import Footer from "@/components/Footer";
+import UserManual from "./_component/UserManual";
+import GetStarted from "./_component/GetStarted";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { CgProfile } from "react-icons/cg";
+import { SlBookOpen } from "react-icons/sl";
+import { GrUserSettings } from "react-icons/gr";
 
+const navItems = [
+  {
+    name: "About",
+    link: `/#about`,
+    icon: <CgProfile className="h-4 w-4 text-white" />,
+  },
+  {
+    name: "Feature",
+    link: `/#feature`,
+    icon: <GrUserSettings className="h-4 w-4 text-white" />,
+  },
+  {
+    name: "Manual",
+    link: `/#manual`,
+    icon: <SlBookOpen className="h-4 w-4 text-white" />,
+  },
+  {
+    name: "Join",
+    link: `/#join-now`,
+    icon: <SlBookOpen className="h-4 w-4 text-white" />,
+  },
+];
 export default async function Home() {
   const session = await auth();
-  const user = session?.user;
-  const users = await prisma.user.findMany();
 
   return (
-    <main className="">
-      {/* {user ? (
-        <>
-          {user.username}
-          <form
-            action={async () => {
-              "use server";
-              await signOut();
-            }}
-          >
-            <ul>
-              {users.map((u) => (
-                <li key={u.id}>{u.name}</li>
-              ))}
-            </ul>
-            <Button type="submit">Sign out</Button>
-          </form>
-        </>
-      ) : (
-        <form
-          action={async () => {
-            "use server";
-            await signIn();
-          }}
-        >
-          <Button type="submit">Sign In</Button>
-        </form>
-      )} */}
+    <main>
+      <FloatingNav
+        navItems={navItems}
+        className="rounded-none bg-black text-lg"
+      />
+      <Hero />
+      <Feature />
+      <UserManual />
+      <GetStarted />
+      <Footer className="bg-black" />
     </main>
   );
 }

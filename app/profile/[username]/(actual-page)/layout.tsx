@@ -2,10 +2,8 @@ import { FloatingNav } from "@/components/ui/floating-navbar";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineWorkHistory } from "react-icons/md";
 import { BiSolidSchool } from "react-icons/bi";
-import { GrAchievement } from "react-icons/gr";
 import { LuFileEdit } from "react-icons/lu";
 import { GiSkills } from "react-icons/gi";
-import { RiContactsBook3Line } from "react-icons/ri";
 import { CiSettings } from "react-icons/ci";
 import { auth } from "@/lib/auth";
 

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { ThemeToggler } from "@/components/ThemeToggler";
-
-const inter = Inter({ subsets: ["latin"] });
+import { fira_sans } from "./fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -21,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
+    <html lang="en" className={fira_sans.className}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={inter.className}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="violet"
