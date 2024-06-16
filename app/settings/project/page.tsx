@@ -2,23 +2,19 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import { convertProjectDataFromBackend } from "@/lib/helper";
-import UpdateProjectForm from "@/app/profile/[username]/update/_components/project/UpdateProjectForm";
+import UpdateProjectForm from "../_components/project/UpdateProjectForm";
 
-const page = async ({
-  params: { username },
-}: {
-  params: { username: string };
-}) => {
+const page = async () => {
   const session = await auth();
   const user = session?.user;
 
-  if (!user || user.username !== username) return <div>Unauthorized</div>;
+  if (!user) return <div>Please Login first</div>;
 
   const getUserProject = async () => {
     const projectData = await prisma.project.findMany({
       where: {
         holder: {
-          username: username,
+          username: user.username as string,
         },
       },
     });

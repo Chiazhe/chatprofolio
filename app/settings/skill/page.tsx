@@ -2,23 +2,19 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import { convertSkillDataFromBackend } from "@/lib/helper";
-import UpdateSkillForm from "@/app/profile/[username]/update/_components/skill/UpdateSkillForm";
+import UpdateSkillForm from "../_components/skill/UpdateSkillForm";
 
-const page = async ({
-  params: { username },
-}: {
-  params: { username: string };
-}) => {
+const page = async () => {
   const session = await auth();
   const user = session?.user;
 
-  if (!user || user.username !== username) return <div>Unauthorized</div>;
+  if (!user) return <div>Please Login first</div>;
 
   const getUserSkill = async () => {
     const skillData = await prisma.skill.findMany({
       where: {
         holder: {
-          username: username,
+          username: user.username as string,
         },
       },
     });

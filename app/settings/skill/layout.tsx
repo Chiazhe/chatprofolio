@@ -1,4 +1,4 @@
-import UpdateFieldHeading from "@/app/profile/[username]/update/_components/UpdateFieldHeading";
+import UpdateFieldHeading from "../_components/UpdateFieldHeading";
 
 export default function ProfileUpdateLayout({
   children,

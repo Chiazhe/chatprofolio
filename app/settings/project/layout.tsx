@@ -1,4 +1,4 @@
-import UpdateFieldHeading from "@/app/profile/[username]/update/_components/UpdateFieldHeading";
+import UpdateFieldHeading from "../_components/UpdateFieldHeading";
 
 export default function ProfileUpdateLayout({
   children,
@@ -8,8 +8,8 @@ export default function ProfileUpdateLayout({
   return (
     <>
       <UpdateFieldHeading
-        title="Contacts"
-        description="Please provide your contact details."
+        title="Projects"
+        description="List any projects you have worked on."
       />
       <main className="w-full">{children}</main>
     </>

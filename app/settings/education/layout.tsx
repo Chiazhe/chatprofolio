@@ -1,4 +1,4 @@
-import UpdateFieldHeading from "@/app/profile/[username]/update/_components/UpdateFieldHeading";
+import UpdateFieldHeading from "../_components/UpdateFieldHeading";
 
 export default function ProfileUpdateLayout({
   children,
@@ -8,8 +8,8 @@ export default function ProfileUpdateLayout({
   return (
     <>
       <UpdateFieldHeading
-        title="Achivements"
-        description="List any notable achievements, awards, or recognition."
+        title="Educations"
+        description="Please insert your education history."
       />
       <main className="w-full">{children}</main>
     </>

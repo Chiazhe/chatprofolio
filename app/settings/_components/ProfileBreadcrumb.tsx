@@ -6,7 +6,6 @@ import { SlashIcon } from "@radix-ui/react-icons";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,

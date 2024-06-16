@@ -1,22 +1,18 @@
-import UpdateBasicInformationForm from "@/app/profile/[username]/update/_components/profile/UpdateBasicInformationForm";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
+import UpdateBasicInformationForm from "../_components/profile/UpdateBasicInformationForm";
 
-const page = async ({
-  params: { username },
-}: {
-  params: { username: string };
-}) => {
+const page = async () => {
   const session = await auth();
   const user = session?.user;
 
-  if (!user || user.username !== username) return <div>Unauthorized</div>;
+  if (!user) return <div>Please Login first</div>;
 
   const getBasicInformation = async () => {
     const contactData = await prisma.user.findFirst({
       where: {
-        username: username,
+        username: user.username as string,
       },
     });
 

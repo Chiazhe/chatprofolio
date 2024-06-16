@@ -66,7 +66,7 @@ export default async function ProfileUpdateLayout({
   if (username === user?.username) {
     navItems.push({
       name: "Setting",
-      link: `/profile/${username}/update`,
+      link: `/settings`,
       icon: <CiSettings className="h-4 w-4 text-neutral-500 dark:text-white" />,
     });
   }

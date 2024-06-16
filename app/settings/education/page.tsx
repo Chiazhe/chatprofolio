@@ -2,23 +2,19 @@ import { auth } from "@/lib/auth";
 import React from "react";
 import prisma from "@/lib/db";
 import { convertEducationDataFromBackend } from "@/lib/helper";
-import UpdateEducationForm from "@/app/profile/[username]/update/_components/education/UpdateEducationForm";
+import UpdateEducationForm from "../_components/education/UpdateEducationForm";
 
-const page = async ({
-  params: { username },
-}: {
-  params: { username: string };
-}) => {
+const page = async () => {
   const session = await auth();
   const user = session?.user;
 
-  if (!user || user.username !== username) return <div>Unauthorized</div>;
+  if (!user) return <div>Please Login first</div>;
 
   const getUserEducation = async () => {
     const educationData = await prisma.education.findMany({
       where: {
         holder: {
-          username: username,
+          username: user.username as string,
         },
       },
     });
