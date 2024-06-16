@@ -10,19 +10,24 @@ export const updateContact = async (contact: ContactFormType) => {
 
   if (!user) return Error("Unauthenticated");
 
-  const exisitingData = await prisma.contact.findFirst({
-    where: { holderId: user.id },
-  });
-  if (exisitingData) {
-    await prisma.contact.update({
-      where: {
-        id: exisitingData.id,
-      },
-      data: contact,
+  try {
+    const exisitingData = await prisma.contact.findFirst({
+      where: { holderId: user.id },
     });
-  } else {
-    await prisma.contact.create({
-      data: { ...contact, holderId: user.id as string },
-    });
+    if (exisitingData) {
+      await prisma.contact.update({
+        where: {
+          id: exisitingData.id,
+        },
+        data: contact,
+      });
+    } else {
+      await prisma.contact.create({
+        data: { ...contact, holderId: user.id as string },
+      });
+    }
+    return {};
+  } catch (e) {
+    return { error: "Update failed." };
   }
 };
