@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 import React from "react";
 import UpdateBasicInformationForm from "../_components/profile/UpdateBasicInformationForm";
+import { BasicInformationFormType } from "@/lib/zodSchema/basicInformation";
 
 const page = async () => {
   const session = await auth();
@@ -16,7 +17,7 @@ const page = async () => {
       },
     });
 
-    return contactData;
+    return contactData as BasicInformationFormType;
   };
 
   return (
