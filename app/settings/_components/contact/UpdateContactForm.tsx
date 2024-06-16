@@ -14,6 +14,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { ContactFormSchema, ContactFormType } from "@/lib/zodSchema/contact";
 import { updateContact } from "@/actions/update-contact";
+import { toast } from "react-toastify";
 
 type Props = {
   contactData: ContactFormType | null;
@@ -39,15 +40,19 @@ const UpdateContactForm = ({ contactData }: Props) => {
         },
   });
 
-  function onSubmit(values: ContactFormType) {
-    console.log(values);
-    updateContact(values);
+  async function onSubmit(values: ContactFormType) {
+    const res = await updateContact(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-2 hover:bg-primary/10  p-8">
+        <div className="flex flex-col gap-2 p-8 hover:bg-primary/10">
           <FormField
             control={form.control}
             name="email"

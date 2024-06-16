@@ -30,6 +30,7 @@ import { updateAchievement } from "@/actions/update-achievement";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "react-toastify";
 
 type Props = {
   existingAchievements: AchievementFormType["achievements"];
@@ -55,9 +56,13 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
     name: "achievements",
   });
 
-  function onSubmit(values: AchievementFormType) {
-    console.log(values);
-    updateAchievement(values);
+  async function onSubmit(values: AchievementFormType) {
+    const res = await updateAchievement(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (
@@ -69,7 +74,7 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
               <>
                 <li
                   key={achievement.id}
-                  className="flex flex-col gap-2 hover:bg-primary/10 p-8"
+                  className="flex flex-col gap-2 p-8 hover:bg-primary/10"
                 >
                   <FormField
                     control={form.control}
@@ -108,7 +113,7 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
                     control={form.control}
                     name={`achievements.${index}.achievementExpiry`}
                     render={({ field }) => (
-                      <FormItem className="flex flex-col w-full">
+                      <FormItem className="flex w-full flex-col">
                         <FormLabel>Achievement Expiry</FormLabel>
                         <Popover>
                           <PopoverTrigger asChild>
@@ -117,7 +122,7 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
                                 variant={"outline"}
                                 className={cn(
                                   "w-full pl-3 text-left font-normal",
-                                  !field.value && "text-muted-foreground"
+                                  !field.value && "text-muted-foreground",
                                 )}
                               >
                                 {field.value ? (
@@ -160,7 +165,7 @@ const UpdateAchievementForm = ({ existingAchievements }: Props) => {
             );
           })}
         </ul>
-        <div className="flex justify-between items-center my-4">
+        <div className="my-4 flex items-center justify-between">
           <Button
             variant="outline"
             type="button"

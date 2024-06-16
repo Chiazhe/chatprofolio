@@ -28,6 +28,7 @@ import { updateProject } from "@/actions/update-project";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "react-toastify";
 
 type Props = {
   existingProjects: ProjectFormType["projects"];
@@ -57,9 +58,13 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
     name: "projects",
   });
 
-  function onSubmit(values: ProjectFormType) {
-    console.log(values);
-    updateProject(values);
+  async function onSubmit(values: ProjectFormType) {
+    const res = await updateProject(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (
@@ -71,7 +76,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
               <>
                 <li
                   key={education.id}
-                  className="flex flex-col gap-2 hover:bg-primary/10  p-8"
+                  className="flex flex-col gap-2 p-8 hover:bg-primary/10"
                 >
                   <FormField
                     control={form.control}
@@ -145,7 +150,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                       control={form.control}
                       name={`projects.${index}.startDate`}
                       render={({ field }) => (
-                        <FormItem className="flex flex-col w-full">
+                        <FormItem className="flex w-full flex-col">
                           <FormLabel>Start Date</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
@@ -154,7 +159,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                                   variant={"outline"}
                                   className={cn(
                                     "w-full pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
+                                    !field.value && "text-muted-foreground",
                                   )}
                                 >
                                   {field.value ? (
@@ -190,7 +195,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                       control={form.control}
                       name={`projects.${index}.endDate`}
                       render={({ field }) => (
-                        <FormItem className="flex flex-col w-full">
+                        <FormItem className="flex w-full flex-col">
                           <FormLabel>End Date</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
@@ -199,7 +204,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                                   variant={"outline"}
                                   className={cn(
                                     "w-full pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
+                                    !field.value && "text-muted-foreground",
                                   )}
                                 >
                                   {field.value ? (
@@ -248,7 +253,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
             );
           })}
         </ul>
-        <div className="flex justify-between items-center my-4">
+        <div className="my-4 flex items-center justify-between">
           <Button
             variant="outline"
             type="button"

@@ -21,6 +21,7 @@ import { updateSkill } from "@/actions/update-skill";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "react-toastify";
 
 type Props = {
   existingSkills: SkillType[];
@@ -45,9 +46,13 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
     name: "skills",
   });
 
-  function onSubmit(values: SkillFormType) {
-    console.log(values);
-    updateSkill(values);
+  async function onSubmit(values: SkillFormType) {
+    const res = await updateSkill(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (
@@ -59,7 +64,7 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
               <>
                 <li
                   key={skill.id}
-                  className="flex flex-col gap-2 hover:bg-primary/10  p-8"
+                  className="flex flex-col gap-2 p-8 hover:bg-primary/10"
                 >
                   <FormField
                     control={form.control}
@@ -121,7 +126,7 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
             );
           })}
         </ul>
-        <div className="flex justify-between items-center my-4">
+        <div className="my-4 flex items-center justify-between">
           <Button
             variant="outline"
             type="button"

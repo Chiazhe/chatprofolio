@@ -31,6 +31,7 @@ import { updateExperience } from "@/actions/update-experience";
 import { IoTrashOutline } from "react-icons/io5";
 import { Separator } from "@/components/ui/separator";
 import { IoMdAdd } from "react-icons/io";
+import { toast } from "react-toastify";
 
 type Props = {
   existingExperiences: ExperienceFormType["experiences"];
@@ -59,9 +60,13 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
     name: "experiences",
   });
 
-  function onSubmit(values: ExperienceFormType) {
-    console.log(values);
-    updateExperience(values);
+  async function onSubmit(values: ExperienceFormType) {
+    const res = await updateExperience(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (

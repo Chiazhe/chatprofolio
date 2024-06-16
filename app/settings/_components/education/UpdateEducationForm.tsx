@@ -30,6 +30,7 @@ import { RelevantCourseForm } from "./RelevantCourseForm";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "react-toastify";
 
 type Props = {
   existingEducations: EducationFormType["educations"];
@@ -59,9 +60,13 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
     name: "educations",
   });
 
-  function onSubmit(values: EducationFormType) {
-    console.log(values);
-    updateEducation(values);
+  async function onSubmit(values: EducationFormType) {
+    const res = await updateEducation(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (

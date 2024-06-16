@@ -1,22 +1,26 @@
 import Sidebar from "@/components/Sidebar";
 import ProfileBreadcrumb from "./_components/ProfileBreadcrumb";
 import { Separator } from "@/components/ui/separator";
+import { auth } from "@/lib/auth";
 
-export default function ProfileUpdateLayout({
+export default async function ProfileUpdateLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await auth();
+  const user = session?.user;
+
   return (
-    <div className="flex w-full min-h-[100vh]">
-      <Sidebar />
-      <main className="w-full max-w-[1200px] mx-auto">
+    <div className="flex min-h-[100vh] w-full">
+      <Sidebar username={user?.username as string} />
+      <main className="mx-auto w-full max-w-[1200px]">
         <div className="mx-8">
           <div className="py-4">
             <ProfileBreadcrumb />
           </div>
           <Separator className="mb-2" />
-          <div className="flex flex-col md:flex-row gap-4 w-full">
+          <div className="flex w-full flex-col gap-4 md:flex-row">
             {children}
           </div>
         </div>

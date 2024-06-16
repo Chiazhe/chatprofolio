@@ -18,6 +18,7 @@ import {
 } from "@/lib/zodSchema/basicInformation";
 import { updateBasicInformation } from "@/actions/update-basic-information";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "react-toastify";
 
 type Props = {
   basicInformationData: BasicInformationFormType | null;
@@ -40,15 +41,19 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
         },
   });
 
-  function onSubmit(values: BasicInformationFormType) {
-    console.log(values);
-    updateBasicInformation(values);
+  async function onSubmit(values: BasicInformationFormType) {
+    const res = await updateBasicInformation(values);
+    if ("error" in res) {
+      toast(res.error);
+    } else {
+      toast("Information updated successfully.");
+    }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-2 hover:bg-primary/10  p-8">
+        <div className="flex flex-col gap-2 p-8 hover:bg-primary/10">
           <FormField
             control={form.control}
             name="username"

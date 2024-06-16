@@ -26,20 +26,24 @@ const ProfileBreadcrumb = (props: Props) => {
       <BreadcrumbList>
         <BreadcrumbItem>
           <div
-            onClick={() => router.push(`${profilePath}/profile`)}
+            onClick={() => router.push(`${profilePath}`)}
             className="hover:cursor-pointer"
           >
-            User Information
+            Settings
           </div>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <SlashIcon />
-        </BreadcrumbSeparator>
-        <BreadcrumbItem>
-          <BreadcrumbPage>
-            {uppercase_first_letter(currentPath as string)}
-          </BreadcrumbPage>
-        </BreadcrumbItem>
+        {currentPath !== "settings" && (
+          <>
+            <BreadcrumbSeparator>
+              <SlashIcon />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbPage>
+                {uppercase_first_letter(currentPath as string)}
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </>
+        )}
       </BreadcrumbList>
     </Breadcrumb>
   );

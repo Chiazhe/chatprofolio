@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { ThemeToggler } from "@/components/ThemeToggler";
 import { fira_sans } from "./fonts";
+import ToastProvider from "@/lib/providers/ReactToastProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -40,7 +41,9 @@ export default function RootLayout({
             "yellow",
           ]}
         >
-          <div className="min-h-screen">{children}</div>
+          <div className="min-h-screen">
+            <ToastProvider>{children}</ToastProvider>
+          </div>
           <ThemeToggler className="fixed right-6 top-6" />
         </ThemeProvider>
       </body>

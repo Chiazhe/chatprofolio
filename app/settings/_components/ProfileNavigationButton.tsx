@@ -1,20 +1,30 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
 type Props = {
+  className?: string;
   title: string;
   action: () => void;
   isActive: boolean;
   icon: React.JSX.Element;
 };
 
-const ProfileNavigationButton = ({ title, action, isActive, icon }: Props) => {
+const ProfileNavigationButton = ({
+  className,
+  title,
+  action,
+  isActive,
+  icon,
+}: Props) => {
   return (
     <div
       onClick={action}
-      className={`py-1 px-2 rounded flex items-center gap-2
-            hover:bg-primary/75 hover:cursor-pointer ${
-              isActive && "bg-primary/75 font-semibold"
-            }`}
+      className={cn(
+        `flex items-center gap-2 rounded px-2 py-1 hover:cursor-pointer hover:bg-primary/75 ${
+          isActive && "bg-primary/75 font-semibold"
+        }`,
+        className,
+      )}
     >
       <span>{icon}</span>
       {title}
