@@ -7,7 +7,7 @@ import { fira_sans } from "./fonts";
 export const metadata: Metadata = {
   title: {
     absolute: "",
-    default: "Portfolio App",
+    default: "ChatProfolio",
     template: "Profile | %s",
   },
   description: "Built with Next.js",
