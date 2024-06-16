@@ -12,33 +12,33 @@ import { CiLogin } from "react-icons/ci";
 import { PiHandshakeLight } from "react-icons/pi";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
-const navItems = [
-  {
-    name: "About",
-    link: `/#about`,
-    icon: <IoIosInformationCircleOutline className="h-4 w-4 text-white" />,
-  },
-  {
-    name: "Feature",
-    link: `/#feature`,
-    icon: <GrUserSettings className="h-4 w-4 text-white" />,
-  },
-  {
-    name: "Manual",
-    link: `/#manual`,
-    icon: <SlBookOpen className="h-4 w-4 text-white" />,
-  },
-  {
-    name: "Join",
-    link: `/#join-now`,
-    icon: <PiHandshakeLight className="h-4 w-4 text-white" />,
-  },
-];
-
 export default async function Home() {
   const session = await auth();
 
   const user = session?.user;
+
+  const navItems = [
+    {
+      name: "About",
+      link: `/#about`,
+      icon: <IoIosInformationCircleOutline className="h-4 w-4 text-white" />,
+    },
+    {
+      name: "Feature",
+      link: `/#feature`,
+      icon: <GrUserSettings className="h-4 w-4 text-white" />,
+    },
+    {
+      name: "Manual",
+      link: `/#manual`,
+      icon: <SlBookOpen className="h-4 w-4 text-white" />,
+    },
+    {
+      name: "Join",
+      link: `/#join-now`,
+      icon: <PiHandshakeLight className="h-4 w-4 text-white" />,
+    },
+  ];
 
   if (!user) {
     navItems.push({

@@ -83,6 +83,7 @@ const Sidebar = ({ username }: Props) => {
     if ("error" in res) {
       toast(res.error);
     } else {
+      toast("Logout success");
       redirect("/");
     }
   };
