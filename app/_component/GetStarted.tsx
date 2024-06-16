@@ -2,11 +2,14 @@
 
 import { Vortex } from "@/components/ui/vortex";
 import { data } from "@/lib/landing-page-data";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {};
 
 const GetStarted = (props: Props) => {
+  const router = useRouter();
+
   return (
     <div id="join-now">
       <Vortex
@@ -27,7 +30,10 @@ const GetStarted = (props: Props) => {
           {data.getStarted.secondary}
         </p>
         <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row md:mt-8">
-          <button className="mt-4 rounded-lg bg-primary px-4 py-2 font-semibold text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset] transition duration-200 hover:bg-white hover:text-primary md:mt-8">
+          <button
+            onClick={() => router.push("/login")}
+            className="mt-4 rounded-lg bg-primary px-4 py-2 font-semibold text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset] transition duration-200 hover:bg-white hover:text-primary md:mt-8"
+          >
             {data.getStarted.button}
           </button>
         </div>

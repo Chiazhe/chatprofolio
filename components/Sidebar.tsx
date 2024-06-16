@@ -16,12 +16,14 @@ import { RiContactsBook3Line } from "react-icons/ri";
 import ProfileNavigationButton from "@/app/settings/_components/ProfileNavigationButton";
 import { logout } from "@/actions/logout";
 import { toast } from "react-toastify";
+import { User } from "@prisma/client";
 
 type Props = {
+  user: User | undefined;
   username: string | undefined | null;
 };
 
-const Sidebar = ({ username }: Props) => {
+const Sidebar = ({ username, user }: Props) => {
   const router = useRouter();
   const path = usePathname();
 
@@ -110,13 +112,23 @@ const Sidebar = ({ username }: Props) => {
             />
           ))}
       </div>
-      <ProfileNavigationButton
-        className="bg-primary text-black"
-        title="Logout"
-        action={() => logoutHandler()}
-        isActive={false}
-        icon={<IoIosLogOut />}
-      />
+      {!!user ? (
+        <ProfileNavigationButton
+          className="bg-primary text-black"
+          title="Logout"
+          action={() => logoutHandler()}
+          isActive={false}
+          icon={<IoIosLogOut />}
+        />
+      ) : (
+        <ProfileNavigationButton
+          className="bg-primary text-black"
+          title="Login"
+          action={() => router.push("/login")}
+          isActive={false}
+          icon={<IoIosLogOut />}
+        />
+      )}
     </div>
   );
 };

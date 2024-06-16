@@ -2,6 +2,7 @@ import Sidebar from "@/components/Sidebar";
 import ProfileBreadcrumb from "./_components/ProfileBreadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { auth } from "@/lib/auth";
+import { User } from "@prisma/client";
 
 export default async function ProfileUpdateLayout({
   children,
@@ -13,7 +14,7 @@ export default async function ProfileUpdateLayout({
 
   return (
     <div className="flex min-h-[100vh] w-full">
-      <Sidebar username={user?.username as string} />
+      <Sidebar username={user?.username as string} user={user as User} />
       <main className="mx-auto w-full max-w-[1200px]">
         <div className="mx-8">
           <div className="py-4">
