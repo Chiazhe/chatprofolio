@@ -91,30 +91,28 @@ const Sidebar = ({ username, user }: Props) => {
   };
 
   return (
-    <div className="flex w-[250px] flex-col justify-between p-4">
-      <div className="flex flex-col gap-[2px]">
-        <h1 className="mb-2 px-2 py-1 text-lg font-semibold">Settings</h1>
-        <ProfileNavigationButton
-          title="General"
-          action={() => router.push(`/settings`)}
-          isActive={path.split("/")[path.split("/").length - 1] === "settings"}
-          icon={<IoSettingsOutline />}
-        />
-        {items
-          .filter((item) => item.display)
-          .map((item) => (
-            <ProfileNavigationButton
-              key={item.title}
-              title={item.title}
-              action={item.action}
-              isActive={item.isActive}
-              icon={item.icon}
-            />
-          ))}
-      </div>
+    <div className="gap-[2px flex w-[250px] flex-col p-4">
+      <h1 className="mb-4 px-2 py-1 text-lg font-semibold">Settings</h1>
+      <ProfileNavigationButton
+        title="General"
+        action={() => router.push(`/settings`)}
+        isActive={path.split("/")[path.split("/").length - 1] === "settings"}
+        icon={<IoSettingsOutline />}
+      />
+      {items
+        .filter((item) => item.display)
+        .map((item) => (
+          <ProfileNavigationButton
+            key={item.title}
+            title={item.title}
+            action={item.action}
+            isActive={item.isActive}
+            icon={item.icon}
+          />
+        ))}
       {!!user ? (
         <ProfileNavigationButton
-          className="bg-primary text-black"
+          className="mt-4 bg-primary text-black"
           title="Logout"
           action={() => logoutHandler()}
           isActive={false}
@@ -122,7 +120,7 @@ const Sidebar = ({ username, user }: Props) => {
         />
       ) : (
         <ProfileNavigationButton
-          className="bg-primary text-black"
+          className="mt-4 bg-primary text-black"
           title="Login"
           action={() => router.push("/login")}
           isActive={false}

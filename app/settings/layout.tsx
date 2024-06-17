@@ -15,7 +15,7 @@ export default async function ProfileUpdateLayout({
   return (
     <div className="flex min-h-[100vh] w-full">
       <Sidebar username={user?.username as string} user={user as User} />
-      <main className="mx-auto w-full max-w-[1200px]">
+      <main className="mx-auto w-full max-w-[1200px] overflow-y-scroll">
         <div className="mx-8">
           <div className="py-4">
             <ProfileBreadcrumb />
