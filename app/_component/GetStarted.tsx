@@ -32,7 +32,7 @@ const GetStarted = (props: Props) => {
         <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row md:mt-8">
           <button
             onClick={() => router.push("/login")}
-            className="mt-4 rounded-lg bg-primary px-4 py-2 font-semibold text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset] transition duration-200 hover:bg-white hover:text-primary md:mt-8"
+            className="mt-4 rounded-lg border-[2px] border-primary bg-card px-4 py-2 font-semibold text-white transition duration-200 hover:bg-white hover:text-card md:mt-8"
           >
             {data.getStarted.button}
           </button>

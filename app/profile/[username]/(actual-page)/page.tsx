@@ -110,9 +110,7 @@ const page = async ({
         <Project data={await getUserProject()} />
       </div>
       <Skill data={await getUserSkill()} />
-      <div className="relative w-full px-8 sm:px-12 md:px-20">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

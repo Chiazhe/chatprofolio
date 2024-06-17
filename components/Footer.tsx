@@ -7,7 +7,7 @@ type Props = {
 
 const Footer = (props: Props) => {
   return (
-    <footer className={cn("z-100 pb-20", props.className)}>
+    <footer className={cn("z-100 py-20", props.className)}>
       <div className="flex flex-col items-center justify-center gap-4 text-center text-sm font-thin">
         <p className="max-w-[300px]">
           Coded in{" "}
