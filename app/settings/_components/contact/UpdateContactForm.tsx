@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { ContactFormSchema, ContactFormType } from "@/lib/zodSchema/contact";
 import { updateContact } from "@/actions/update-contact";
 import { toast } from "react-toastify";
+import { inter } from "@/app/fonts";
 
 type Props = {
   contactData: ContactFormType | null;
@@ -51,7 +52,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={inter.className}>
         <div className="flex flex-col gap-2 p-8 hover:bg-primary/10">
           <FormField
             control={form.control}
@@ -114,7 +115,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="leetcode"
             render={({ field }) => (
@@ -206,7 +207,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
         </div>
         <Button type="submit" className="my-4">
           Update

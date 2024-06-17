@@ -7,8 +7,8 @@ type Props = {
 
 const Footer = (props: Props) => {
   return (
-    <footer className={cn("pb-20", props.className)}>
-      <div className="flex items-center justify-center text-center text-sm font-thin">
+    <footer className={cn("z-100 pb-20", props.className)}>
+      <div className="flex flex-col items-center justify-center gap-4 text-center text-sm font-thin">
         <p className="max-w-[300px]">
           Coded in{" "}
           <a
@@ -26,7 +26,7 @@ const Footer = (props: Props) => {
           >
             Next.js
           </a>{" "}
-          and
+          and{" "}
           <a
             href="https://tailwindcss.com/"
             target="_blank"
@@ -51,6 +51,25 @@ const Footer = (props: Props) => {
             shadcn/ui
           </a>
           .
+        </p>
+        <p className="max-w-[300px]">
+          ©{" "}
+          <a
+            href="https://chatprofolio.vercel.app/"
+            className="font-normal text-primary/80 hover:text-primary"
+            target="_blank"
+          >
+            ChatProfolio
+          </a>{" "}
+          2024
+          <br></br>Developed by{" "}
+          <a
+            href="https://www.linkedin.com/in/chiazhe/"
+            className="font-normal text-primary/80 hover:text-primary"
+            target="_blank"
+          >
+            Lee Chia Zhe
+          </a>
         </p>
       </div>
     </footer>

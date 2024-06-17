@@ -29,6 +29,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "react-toastify";
+import { inter } from "@/app/fonts";
 
 type Props = {
   existingProjects: ProjectFormType["projects"];
@@ -69,7 +70,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={inter.className}>
         <ul className="flex flex-col gap-4">
           {fields.map((education, index) => {
             return (

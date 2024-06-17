@@ -32,6 +32,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { Separator } from "@/components/ui/separator";
 import { IoMdAdd } from "react-icons/io";
 import { toast } from "react-toastify";
+import { inter } from "@/app/fonts";
 
 type Props = {
   existingExperiences: ExperienceFormType["experiences"];
@@ -71,7 +72,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={inter.className}>
         <ul className="flex flex-col gap-4">
           {fields.map((education, index) => {
             return (
@@ -114,7 +115,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                   />
                   <WorkDescriptionForm form={form} index={index} />
                   <SkillUsedForm form={form} index={index} />
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name={`experiences.${index}.companyLogo`}
                     render={({ field }) => (
@@ -129,7 +130,7 @@ const UpdateExperienceForm = ({ existingExperiences }: Props) => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
                   <div className="md:flex md:w-full">
                     <FormField
                       control={form.control}

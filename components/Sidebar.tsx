@@ -6,7 +6,7 @@ import React from "react";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineWorkHistory } from "react-icons/md";
 import { BiSolidSchool } from "react-icons/bi";
-import { GrAchievement } from "react-icons/gr";
+// import { GrAchievement } from "react-icons/gr";
 import { LuFileEdit } from "react-icons/lu";
 import { GiSkills } from "react-icons/gi";
 import { IoIosLogOut } from "react-icons/io";
@@ -49,13 +49,13 @@ const Sidebar = ({ username, user }: Props) => {
       icon: <BiSolidSchool />,
       display: !!username,
     },
-    {
-      title: "Achievement",
-      action: () => router.push(`/settings/achievement`),
-      isActive: path.split("/")[path.split("/").length - 1] === "achievement",
-      icon: <GrAchievement />,
-      display: !!username,
-    },
+    // {
+    //   title: "Achievement",
+    //   action: () => router.push(`/settings/achievement`),
+    //   isActive: path.split("/")[path.split("/").length - 1] === "achievement",
+    //   icon: <GrAchievement />,
+    //   display: !!username,
+    // },
     {
       title: "Project",
       action: () => router.push(`/settings/project`),

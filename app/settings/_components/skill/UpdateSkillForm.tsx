@@ -22,6 +22,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "react-toastify";
+import { inter } from "@/app/fonts";
 
 type Props = {
   existingSkills: SkillType[];
@@ -57,7 +58,7 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={inter.className}>
         <ul className="flex flex-col gap-4">
           {fields.map((skill, index) => {
             return (

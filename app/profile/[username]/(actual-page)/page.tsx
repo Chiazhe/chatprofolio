@@ -4,8 +4,6 @@ import Experience from "../_component/Experience";
 import Education from "../_component/Education";
 import Project from "../_component/Project";
 import Skill from "../_component/Skill";
-import Achievement from "../_component/Achievement";
-import Contact from "../_component/Contact";
 import prisma from "@/lib/db";
 import { BackgroundBeams } from "@/components/ui/background-beam";
 import Footer from "../../../../components/Footer";
@@ -113,9 +111,7 @@ const page = async ({
       </div>
       <Skill data={await getUserSkill()} />
       <div className="relative w-full px-8 sm:px-12 md:px-20">
-        {/* <Contact /> */}
         <Footer />
-        <BackgroundBeams />
       </div>
     </>
   );

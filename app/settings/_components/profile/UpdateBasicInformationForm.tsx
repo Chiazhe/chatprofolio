@@ -19,6 +19,7 @@ import {
 import { updateBasicInformation } from "@/actions/update-basic-information";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "react-toastify";
+import { inter } from "@/app/fonts";
 
 type Props = {
   basicInformationData: BasicInformationFormType | null;
@@ -52,7 +53,7 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={inter.className}>
         <div className="flex flex-col gap-2 p-8 hover:bg-primary/10">
           <FormField
             control={form.control}
@@ -158,7 +159,7 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="userLocation"
             render={({ field }) => (
@@ -170,7 +171,7 @@ const UpdateBasicInformationForm = ({ basicInformationData }: Props) => {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
         </div>
         <Button type="submit" className="my-4">
           Update
