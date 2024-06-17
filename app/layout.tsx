@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/context/ThemeProvider";
 import { ThemeToggler } from "@/components/ThemeToggler";
 import { fira_sans } from "./fonts";
 import ToastProvider from "@/lib/providers/ReactToastProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
@@ -46,6 +47,7 @@ export default function RootLayout({
           </div>
           <ThemeToggler className="fixed right-6 top-6" />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
