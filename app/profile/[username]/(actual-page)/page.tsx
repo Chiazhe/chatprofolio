@@ -100,10 +100,13 @@ const page = async ({
   return (
     <>
       <div className="flex w-full flex-col gap-28 px-8 sm:px-12 md:gap-48 md:px-20">
-        <About
-          data={await getBasicInformation()}
-          contactData={await getContact()}
-        />
+        <div id="about">
+          <About
+            data={await getBasicInformation()}
+            contactData={await getContact()}
+            aboutPreference="1"
+          />
+        </div>
         <BackgroundBeams />
         <Experience data={await getUserExperience()} />
         <Education data={await getUserEducation()} />
