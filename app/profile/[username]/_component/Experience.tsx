@@ -9,14 +9,67 @@ import { DateTime } from "luxon";
 
 type Props = {
   data: ExperienceData[] | null;
+  experiencePreference?: string;
 };
 
-const Experience = ({ data }: Props) => {
+const Experience = ({ data, experiencePreference }: Props) => {
+  if (experiencePreference === "1") {
+    return (
+      <div className="flex w-full flex-col items-center justify-center">
+        <div className="mb-8 text-center">
+          <HeadingDescription text="WHAT I HAVE DONE SO FAR" />
+          <Heading text="Work Experiences." />
+        </div>
+        <div className="flex w-full flex-col gap-2">
+          {data?.map((experience, index) => (
+            <div
+              className="flex w-full flex-col p-8 hover:bg-primary/10 md:flex-row"
+              key={`experience-${index}`}
+            >
+              <p className="w-[250px] text-nowrap md:text-center">
+                {DateTime.fromJSDate(experience.startDate as Date).toFormat(
+                  "yyyy",
+                )}{" "}
+                -{" "}
+                {experience.endDate
+                  ? DateTime.fromJSDate(experience.endDate).toFormat("yyyy")
+                  : "Present"}
+              </p>
+              <div className="mt-4 flex w-full flex-col gap-2 text-left md:mt-0 md:gap-4">
+                <div>
+                  <h1 className="text-lg text-primary md:text-3xl">
+                    {experience.title} | {experience.companyName}
+                  </h1>
+                </div>
+                <div>
+                  <ul className="list-square flex flex-col gap-2 text-justify text-slate-300">
+                    {experience.workDescription.map((desc, descIndex) => (
+                      <li key={`job-description-${descIndex}`}>{desc}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <ul className="flex flex-wrap gap-2">
+                    {experience.skillUsed.map((skill, skillIndex) => (
+                      <li
+                        key={`skill-${skillIndex}`}
+                        className={`bg-primary px-2 py-1 text-black`}
+                      >
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      id="experience"
-      className="flex w-full flex-col items-center justify-center"
-    >
+    <div className="flex w-full flex-col items-center justify-center">
       <div className="mb-8 text-center">
         <HeadingDescription text="WHAT I HAVE DONE SO FAR" />
         <Heading text="Work Experiences." />

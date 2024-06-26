@@ -108,7 +108,12 @@ const page = async ({
           />
         </div>
         <BackgroundBeams />
-        <Experience data={await getUserExperience()} />
+        <div id="experience">
+          <Experience
+            data={await getUserExperience()}
+            experiencePreference="1"
+          />
+        </div>
         <Education data={await getUserEducation()} />
         <Project data={await getUserProject()} />
       </div>

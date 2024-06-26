@@ -95,6 +95,13 @@ const config = {
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
+    listStyleType: {
+      none: "none",
+      disc: "disc",
+      decimal: "decimal",
+      square: "square",
+      roman: "upper-roman",
+    },
   },
   plugins: [
     require("tailwindcss-animate"),

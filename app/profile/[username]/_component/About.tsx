@@ -23,17 +23,9 @@ const About = ({ data, contactData, aboutPreference }: Props) => {
           <p className="mt-2 text-3xl text-primary/80 md:mt-4 md:text-6xl">
             {data?.shortIntro}
           </p>
-          {/* <p className="mt-2 text-zinc-400">{data?.mediumIntro as string}</p> */}
           <p className="mt-4 max-w-[700px] text-gray-400 md:mt-8">
             {data?.longIntro as string}
           </p>
-          {/* <div className="mt-32">
-            <HeadingDescription text="INTRODUCTION" />
-            <Heading text="Overview." />
-            <p className="mt-8 max-w-[700px] text-gray-400">
-              {data?.longIntro as string}
-            </p>
-          </div> */}
         </div>
         <ul className="flex flex-row gap-8 md:flex-col md:gap-4">
           <div className="hidden flex-col items-center justify-center md:flex">
