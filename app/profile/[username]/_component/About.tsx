@@ -15,7 +15,7 @@ type Props = {
 const About = ({ data, contactData, aboutPreference }: Props) => {
   if (aboutPreference === "1") {
     return (
-      <div className="relative mx-auto my-20 flex w-full max-w-[800px] flex-col justify-between gap-8 bg-background md:flex-row">
+      <div className="relative mx-auto flex w-full max-w-[800px] flex-col justify-between gap-8 bg-background md:flex-row">
         <div>
           <h1 className="text-3xl md:text-5xl">
             Hello, I&apos;m {data?.firstName}
@@ -75,7 +75,7 @@ const About = ({ data, contactData, aboutPreference }: Props) => {
   }
 
   return (
-    <div className="relative mx-auto mt-20 flex w-full flex-col justify-center gap-24 bg-background md:flex-row md:px-24">
+    <div className="relative mx-auto flex w-full flex-col justify-center gap-24 bg-background md:flex-row md:px-24">
       <div className="flex w-full gap-8 md:min-w-[400px] md:max-w-[500px]">
         <div className="flex flex-col items-center justify-center">
           <div className="h-5 w-5 rounded-full bg-primary"></div>
