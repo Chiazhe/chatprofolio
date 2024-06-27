@@ -23,7 +23,7 @@ const Experience = ({ data, experiencePreference }: Props) => {
         <div className="flex w-full flex-col gap-2">
           {data?.map((experience, index) => (
             <div
-              className="flex w-full flex-col p-8 hover:bg-primary/10 md:flex-row"
+              className="flex w-full flex-col border-[1px] border-card p-8 hover:border-slate-600 hover:bg-primary/10 md:flex-row"
               key={`experience-${index}`}
             >
               <p className="w-[250px] text-nowrap md:text-center">

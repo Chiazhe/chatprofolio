@@ -21,7 +21,7 @@ const Education = ({ data, educationPreference }: Props) => {
           {data?.map((education, index) => (
             <div
               key={`education-${index}`}
-              className="flex w-full flex-col p-8 hover:bg-primary/10 md:flex-row"
+              className="flex w-full flex-col border-[1px] border-card p-8 hover:border-slate-600 hover:bg-primary/10 md:flex-row"
             >
               <p className="w-[250px] text-nowrap md:text-center">
                 {DateTime.fromJSDate(education.startDate as Date).toFormat(
