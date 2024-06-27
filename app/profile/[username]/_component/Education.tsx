@@ -6,14 +6,87 @@ import { DateTime } from "luxon";
 
 type Props = {
   data: EducationData[] | null;
+  educationPreference?: string;
 };
 
-const Education = ({ data }: Props) => {
+const Education = ({ data, educationPreference }: Props) => {
+  if (educationPreference === "1") {
+    return (
+      <div>
+        <div className="mb-8 text-center">
+          <HeadingDescription text="WHERE I HAVE GAINED MY KNOWLEDGE." />
+          <Heading text="Educations." />
+        </div>
+        <div className="flex w-full flex-col gap-2">
+          {data?.map((education, index) => (
+            <div
+              key={`education-${index}`}
+              className="flex w-full flex-col p-8 hover:bg-primary/10 md:flex-row"
+            >
+              <p className="w-[250px] text-nowrap md:text-center">
+                {DateTime.fromJSDate(education.startDate as Date).toFormat(
+                  "yyyy",
+                )}{" "}
+                -{" "}
+                {education.endDate
+                  ? DateTime.fromJSDate(education.endDate).toFormat("yyyy")
+                  : "Present"}
+              </p>
+              <div className="mt-4 flex w-full flex-col gap-2 text-left md:mt-0 md:gap-4">
+                <h1 className="text-lg text-primary md:text-3xl">
+                  {education.institution}
+                </h1>
+                <h3 className="flex flex-col gap-2 text-slate-300 md:text-xl">
+                  {education.fieldOfStudy}
+                </h3>
+                {education.specialization &&
+                  education.specialization.length !== 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold">
+                        Specializations:
+                      </h3>
+                      <ul className="flex flex-wrap gap-2">
+                        {education.specialization.map((spec, specIndex) => (
+                          <li
+                            key={`specialization-${specIndex}`}
+                            className={`bg-primary px-2 py-1 text-black`}
+                          >
+                            {spec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                {education.relevantCourses &&
+                  education.relevantCourses.length !== 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold">
+                        Courses Highlight:
+                      </h3>
+                      <ul className="flex flex-wrap gap-2">
+                        {education.relevantCourses.map(
+                          (relevantCourse, relevantCourseIndex) => (
+                            <li
+                              key={`relevantCourse-${relevantCourseIndex}`}
+                              className={`bg-primary px-2 py-1 text-black`}
+                            >
+                              {relevantCourse}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                  )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      id="education"
-      className="flex w-full flex-col items-center justify-center"
-    >
+    <div className="flex w-full flex-col items-center justify-center">
       <div className="mb-8 text-center">
         <HeadingDescription text="WHERE I HAVE GAINED MY KNOWLEDGE." />
         <Heading text="Educations." />

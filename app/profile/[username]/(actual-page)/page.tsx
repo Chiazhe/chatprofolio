@@ -115,7 +115,9 @@ const page = async ({
             experiencePreference="1"
           />
         </div>
-        <Education data={await getUserEducation()} />
+        <div id="education">
+          <Education data={await getUserEducation()} educationPreference="1" />
+        </div>
         <Project data={await getUserProject()} />
       </div>
       <Skill data={await getUserSkill()} />
