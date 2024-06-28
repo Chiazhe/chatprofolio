@@ -56,10 +56,7 @@ export default async function Home() {
 
   return (
     <main>
-      <FloatingNav
-        navItems={navItems}
-        className="rounded-none bg-black text-lg"
-      />
+      <FloatingNav navItems={navItems} className="rounded-none text-lg" />
       <Hero />
       <Feature />
       <UserManual />
