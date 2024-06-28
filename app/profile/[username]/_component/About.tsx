@@ -3,8 +3,10 @@ import { Contact, User } from "@prisma/client";
 import React from "react";
 import Heading, { HeadingDescription } from "./ui/Heading";
 import { FaGithub } from "react-icons/fa";
-import { BsLinkedin, BsTelephone } from "react-icons/bs";
+import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
+import { SiLeetcode } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa6";
 
 type Props = {
   data: User | null;
@@ -16,7 +18,7 @@ const About = ({ data, contactData, aboutPreference }: Props) => {
   if (aboutPreference === "1") {
     return (
       <div className="relative mx-auto flex w-full max-w-[800px] flex-col justify-between gap-8 bg-background md:flex-row">
-        <div>
+        <div className="flex flex-col justify-center">
           <h1 className="text-3xl md:text-5xl">
             Hello, I&apos;m {data?.firstName}
           </h1>
@@ -27,43 +29,52 @@ const About = ({ data, contactData, aboutPreference }: Props) => {
             {data?.longIntro as string}
           </p>
         </div>
-        <ul className="flex flex-row gap-8 md:flex-col md:gap-4">
+        <ul className="flex flex-row justify-center gap-2 md:flex-col md:gap-3">
           <div className="hidden flex-col items-center justify-center md:flex">
             <div className="h-5 w-5 rounded-full bg-primary"></div>
             <div className="h-[40px] w-1 bg-primary"></div>
           </div>
           {contactData?.github && (
-            <li className="z-10">
+            <li className="z-10 rounded-full p-2 hover:bg-primary/50">
               <a href={contactData.github} target="_blank">
                 <span className="bg-primary">
-                  <FaGithub className="h-8 w-8" />
+                  <FaGithub className="h-6 w-6" />
                 </span>
               </a>
             </li>
           )}
           {contactData?.linkedIn && (
-            <li className="z-10">
+            <li className="z-10 rounded-full p-2 hover:bg-primary/50">
               <a href={contactData.linkedIn} target="_blank">
                 <span className="bg-primary">
-                  <BsLinkedin className="h-8 w-8" />
+                  <FaLinkedinIn className="h-6 w-6" />
                 </span>
               </a>
             </li>
           )}
           {contactData?.phoneNumber && (
-            <li className="z-10">
+            <li className="z-10 rounded-full p-2 hover:bg-primary/50">
               <a href={`tel:${contactData.phoneNumber}`} target="_blank">
                 <span className="bg-primary">
-                  <BsTelephone className="h-8 w-8" />
+                  <BsTelephone className="h-6 w-6" />
                 </span>
               </a>
             </li>
           )}
           {contactData?.email && (
-            <li className="z-10">
+            <li className="z-10 rounded-full p-2 hover:bg-primary/50">
               <a href={`mailto:${contactData?.email}`} target="_blank">
                 <span className="bg-primary">
-                  <MdOutlineEmail className="h-8 w-8" />
+                  <MdOutlineEmail className="h-6 w-6" />
+                </span>
+              </a>
+            </li>
+          )}
+          {contactData?.leetcode && (
+            <li className="z-10 rounded-full p-2 hover:bg-primary/50">
+              <a href={contactData.leetcode} target="_blank">
+                <span className="bg-primary">
+                  <SiLeetcode className="h-6 w-6" />
                 </span>
               </a>
             </li>
@@ -107,7 +118,7 @@ const About = ({ data, contactData, aboutPreference }: Props) => {
               <li className="z-10">
                 <a href={contactData.linkedIn} target="_blank">
                   <span className="bg-primary">
-                    <BsLinkedin className="h-8 w-8" />
+                    <FaLinkedinIn className="h-8 w-8" />
                   </span>
                 </a>
               </li>

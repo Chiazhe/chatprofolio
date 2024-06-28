@@ -115,7 +115,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
               </FormItem>
             )}
           />
-          {/* <FormField
+          <FormField
             control={form.control}
             name="leetcode"
             render={({ field }) => (
@@ -131,7 +131,7 @@ const UpdateContactForm = ({ contactData }: Props) => {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="hackerRank"
             render={({ field }) => (
