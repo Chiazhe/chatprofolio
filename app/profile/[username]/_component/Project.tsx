@@ -5,17 +5,77 @@ import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ImGithub } from "react-icons/im";
+import { FaLink } from "react-icons/fa6";
 
 type Props = {
   data: ProjectData[] | null;
+  projectPreference?: string;
 };
 
-const Project = ({ data }: Props) => {
+const Project = ({ data, projectPreference }: Props) => {
+  if (projectPreference === "1") {
+    return (
+      <div>
+        <div className="mb-8 text-center">
+          <HeadingDescription text="WHAT I HAVE CREATED AND BUILT." />
+          <Heading text="Projects." />
+        </div>
+        <div className="grid w-full gap-[2rem] md:grid-cols-[repeat(auto-fill,minmax(500px,1fr))] md:gap-[4rem]">
+          {data?.map((project, index) => (
+            <div
+              key={`project-${index}`}
+              className="flex w-full flex-col gap-4 border-[1px] border-card p-8 hover:border-slate-600 hover:bg-primary/10"
+            >
+              <div className="flex items-center gap-4">
+                <h1 className="text-lg text-primary md:text-3xl">
+                  {project.projectTitle}
+                </h1>
+                {project.githubLink && (
+                  <Link href={project.githubLink} target="__blank">
+                    <ImGithub className="h-6 w-6 md:h-8 md:w-8" />
+                  </Link>
+                )}
+                {project.projectUrl && (
+                  <Link href={project.projectUrl} target="__blank">
+                    <FaLink className="h-6 w-6 md:h-8 md:w-8" />
+                  </Link>
+                )}
+              </div>
+              {project.projectImage && (
+                <Image
+                  src={project.projectImage}
+                  height="1000"
+                  width="1000"
+                  className="h-60 w-full object-cover group-hover/card:shadow-xl"
+                  alt="thumbnail"
+                />
+              )}
+              {project.projectDescription.map((description, descIndex) => (
+                <div key={descIndex} className="mt-2 text-sm">
+                  {description}
+                </div>
+              ))}
+
+              <div className="flex flex-wrap gap-1">
+                {project.technologyUsed.map((tech, techIndex) => (
+                  <div
+                    key={`tech-${techIndex}`}
+                    className={`bg-primary px-2 py-1 text-black`}
+                  >
+                    {tech}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      id="project"
-      className="flex w-full flex-col items-center justify-center"
-    >
+    <div className="flex w-full flex-col items-center justify-center">
       <div className="mb-8 text-center">
         <HeadingDescription text="WHAT I HAVE CREATED AND BUILT." />
         <Heading text="Projects." />
