@@ -122,7 +122,7 @@ const page = async ({
           <Project data={await getUserProject()} projectPreference="1" />
         </div>
       </div>
-      <Skill data={await getUserSkill()} />
+      <Skill data={await getUserSkill()} skillPreference={"1"} />
       <Footer />
     </>
   );
