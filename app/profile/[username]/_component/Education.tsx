@@ -6,11 +6,11 @@ import { DateTime } from "luxon";
 
 type Props = {
   data: EducationData[] | null;
-  educationPreference?: string;
+  educationLayoutPreference?: string;
 };
 
-const Education = ({ data, educationPreference }: Props) => {
-  if (educationPreference === "1") {
+const Education = ({ data, educationLayoutPreference }: Props) => {
+  if (educationLayoutPreference === "1") {
     return (
       <div>
         <div className="mb-8 text-center">

@@ -9,11 +9,11 @@ import { DateTime } from "luxon";
 
 type Props = {
   data: ExperienceData[] | null;
-  experiencePreference?: string;
+  experienceLayoutPreference?: string;
 };
 
-const Experience = ({ data, experiencePreference }: Props) => {
-  if (experiencePreference === "1") {
+const Experience = ({ data, experienceLayoutPreference }: Props) => {
+  if (experienceLayoutPreference === "1") {
     return (
       <div className="flex w-full flex-col items-center justify-center">
         <div className="mb-8 text-center">

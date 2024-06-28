@@ -11,6 +11,7 @@ import { LuFileEdit } from "react-icons/lu";
 import { GiSkills } from "react-icons/gi";
 import { IoIosLogOut } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
+import { MdRoomPreferences } from "react-icons/md";
 
 import { RiContactsBook3Line } from "react-icons/ri";
 import ProfileNavigationButton from "@/app/settings/_components/ProfileNavigationButton";
@@ -75,6 +76,13 @@ const Sidebar = ({ username, user }: Props) => {
       action: () => router.push(`/settings/contact`),
       isActive: path.split("/")[path.split("/").length - 1] === "contact",
       icon: <RiContactsBook3Line />,
+      display: !!username,
+    },
+    {
+      title: "Preference",
+      action: () => router.push(`/settings/preference`),
+      isActive: path.split("/")[path.split("/").length - 1] === "preference",
+      icon: <MdRoomPreferences />,
       display: !!username,
     },
   ];

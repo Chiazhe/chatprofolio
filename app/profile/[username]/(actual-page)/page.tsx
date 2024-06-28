@@ -105,24 +105,27 @@ const page = async ({
           <About
             data={await getBasicInformation()}
             contactData={await getContact()}
-            aboutPreference="1"
+            aboutLayoutPreference="1"
           />
         </div>
         <BackgroundBeams />
         <div id="experience">
           <Experience
             data={await getUserExperience()}
-            experiencePreference="1"
+            experienceLayoutPreference="1"
           />
         </div>
         <div id="education">
-          <Education data={await getUserEducation()} educationPreference="1" />
+          <Education
+            data={await getUserEducation()}
+            educationLayoutPreference="1"
+          />
         </div>
         <div id="project">
-          <Project data={await getUserProject()} projectPreference="1" />
+          <Project data={await getUserProject()} projectLayoutPreference="1" />
         </div>
       </div>
-      <Skill data={await getUserSkill()} skillPreference={"1"} />
+      <Skill data={await getUserSkill()} skillLayoutPreference={"1"} />
       <Footer />
     </>
   );

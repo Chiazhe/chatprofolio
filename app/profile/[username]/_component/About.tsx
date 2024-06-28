@@ -11,11 +11,11 @@ import { FaLinkedinIn } from "react-icons/fa6";
 type Props = {
   data: User | null;
   contactData: Contact | null;
-  aboutPreference?: string;
+  aboutLayoutPreference?: string;
 };
 
-const About = ({ data, contactData, aboutPreference }: Props) => {
-  if (aboutPreference === "1") {
+const About = ({ data, contactData, aboutLayoutPreference }: Props) => {
+  if (aboutLayoutPreference === "1") {
     return (
       <div className="relative mx-auto flex w-full max-w-[800px] flex-col justify-between gap-8 bg-background md:flex-row">
         <div className="flex flex-col justify-center">

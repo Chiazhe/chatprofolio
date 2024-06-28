@@ -6,10 +6,10 @@ import { HoverEffect } from "@/components/ui/card-hover-effect-skill_section";
 
 type Props = {
   data: SkillData[] | null;
-  skillPreference?: string;
+  skillLayoutPreference?: string;
 };
 
-const Skill = ({ data, skillPreference }: Props) => {
+const Skill = ({ data, skillLayoutPreference }: Props) => {
   if (!data) return <></>;
   if (data) {
     data.sort((a, b) => {
@@ -23,7 +23,7 @@ const Skill = ({ data, skillPreference }: Props) => {
     });
   }
 
-  if (skillPreference === "1") {
+  if (skillLayoutPreference === "1") {
     return (
       <div>
         <div className="mb-8 text-center">

@@ -10,11 +10,11 @@ import { FaLink } from "react-icons/fa6";
 
 type Props = {
   data: ProjectData[] | null;
-  projectPreference?: string;
+  projectLayoutPreference?: string;
 };
 
-const Project = ({ data, projectPreference }: Props) => {
-  if (projectPreference === "1") {
+const Project = ({ data, projectLayoutPreference }: Props) => {
+  if (projectLayoutPreference === "1") {
     return (
       <div>
         <div className="mb-8 text-center">
