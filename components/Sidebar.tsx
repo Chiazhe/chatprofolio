@@ -81,13 +81,13 @@ const Sidebar = ({ username, user }: Props) => {
 
   const logoutHandler = async () => {
     const res = await logout();
-
-    if ("error" in res) {
-      toast(res.error);
-    } else {
-      toast("Logout success");
-      redirect("/");
-    }
+    toast("Logout success");
+    // if ("error" in res) {
+    //   toast(res.error);
+    // } else {
+    //   toast("Logout success");
+    //   router.push("/");
+    // }
   };
 
   return (
