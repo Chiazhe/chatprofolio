@@ -5,9 +5,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-type Props = {};
-
-const page = async (props: Props) => {
+const page = async () => {
   const session = await auth();
   const user = session?.user;
 

@@ -4,9 +4,7 @@ import React from "react";
 import UpdateLayoutPreferenceForm from "../_components/preference/UpdateLayoutPreferenceForm";
 import { layoutPreferenceDefaultValue } from "@/lib/layout-data";
 
-type Props = {};
-
-const page = async (props: Props) => {
+const page = async () => {
   const session = await auth();
   const user = session?.user;
 

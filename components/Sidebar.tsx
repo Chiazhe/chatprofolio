@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { CgProfile } from "react-icons/cg";
@@ -88,7 +88,7 @@ const Sidebar = ({ username, user }: Props) => {
   ];
 
   const logoutHandler = async () => {
-    const res = await logout();
+    await logout();
     toast("Logout success");
     // if ("error" in res) {
     //   toast(res.error);
@@ -118,7 +118,7 @@ const Sidebar = ({ username, user }: Props) => {
             icon={item.icon}
           />
         ))}
-      {!!user ? (
+      {user ? (
         <ProfileNavigationButton
           className="mt-4 bg-primary text-black"
           title="Logout"

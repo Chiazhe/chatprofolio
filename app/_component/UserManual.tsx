@@ -7,9 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { lilita_one } from "../fonts";
 
-type Props = {};
-
-const UserManual = (props: Props) => {
+const UserManual = () => {
   return (
     <div
       id="manual"
@@ -48,7 +46,6 @@ const UserManual = (props: Props) => {
 export default UserManual;
 
 const Card = ({
-  title,
   icon,
   children,
   // add this one for the desc
@@ -130,7 +127,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
   );
 };
 
-export const Icon = ({ className, ...rest }: any) => {
+export const Icon = ({ className, ...rest }: { className: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -16,9 +16,8 @@ import React from "react";
 
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-type Props = {};
 
-const SetupUsernameForm = (props: Props) => {
+const SetupUsernameForm = () => {
   const form = useForm<UsernameFormType>({
     resolver: zodResolver(UsernameFormSchema),
     defaultValues: {

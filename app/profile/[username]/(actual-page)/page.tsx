@@ -141,12 +141,16 @@ const page = async ({
             projectLayoutPreference={layoutData?.projectLayoutPreference}
           />
         </div>
+        <div />
       </div>
-      <div id="skill">
-        <Skill
-          data={await getUserSkill()}
-          skillLayoutPreference={layoutData?.skillLayoutPreference}
-        />
+      <div className="flex w-full flex-col gap-28 md:gap-48">
+        <div id="skill">
+          <Skill
+            data={await getUserSkill()}
+            skillLayoutPreference={layoutData?.skillLayoutPreference}
+          />
+        </div>
+        <div />
       </div>
       <Footer />
     </>
