@@ -1,22 +1,36 @@
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import prisma from "@/lib/db";
+import { auth } from "@/lib/auth";
 import React from "react";
+import UpdateLayoutPreferenceForm from "../_components/preference/UpdateLayoutPreferenceForm";
+import { layoutPreferenceDefaultValue } from "@/lib/layout-data";
 
 type Props = {};
 
-const page = (props: Props) => {
+const page = async (props: Props) => {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user) return <div>Please Login first</div>;
+
+  const getUserLayoutPreference = async () => {
+    const layoutPreferenceData = await prisma.layoutPreference.findFirst({
+      where: {
+        holder: {
+          username: user.username as string,
+        },
+      },
+    });
+
+    return layoutPreferenceData;
+  };
+
   return (
-    <div>
-      <RadioGroup defaultValue="option-one">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-one" id="option-one" />
-          <Label htmlFor="option-one">Option One</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-two" id="option-two" />
-          <Label htmlFor="option-two">Option Two</Label>
-        </div>
-      </RadioGroup>
+    <div className="w-full">
+      <UpdateLayoutPreferenceForm
+        existingLayoutPreference={
+          (await getUserLayoutPreference()) || layoutPreferenceDefaultValue
+        }
+      />
     </div>
   );
 };
