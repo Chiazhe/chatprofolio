@@ -6,14 +6,15 @@ import Heading, { HeadingDescription } from "./ui/Heading";
 import { Experience as ExperienceData } from "@prisma/client";
 import { Button } from "@/components/ui/moving-border";
 import { DateTime } from "luxon";
+import { experienceLayout, ExperienceLayoutType } from "@/lib/layout-data";
 
 type Props = {
   data: ExperienceData[] | null;
-  experienceLayoutPreference?: string;
+  experienceLayoutPreference?: ExperienceLayoutType;
 };
 
 const Experience = ({ data, experienceLayoutPreference }: Props) => {
-  if (experienceLayoutPreference === "1") {
+  if (experienceLayoutPreference === experienceLayout[0]) {
     return (
       <div className="flex w-full flex-col items-center justify-center">
         <div className="mb-8 text-center">
@@ -42,7 +43,7 @@ const Experience = ({ data, experienceLayoutPreference }: Props) => {
                   </h1>
                 </div>
                 <div>
-                  <ul className="list-square flex flex-col gap-2 text-justify text-slate-300">
+                  <ul className="flex list-square flex-col gap-2 text-justify text-slate-300">
                     {experience.workDescription.map((desc, descIndex) => (
                       <li key={`job-description-${descIndex}`}>{desc}</li>
                     ))}

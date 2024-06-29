@@ -3,14 +3,15 @@ import React from "react";
 import Heading, { HeadingDescription } from "./ui/Heading";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { DateTime } from "luxon";
+import { educationLayout, EducationLayoutType } from "@/lib/layout-data";
 
 type Props = {
   data: EducationData[] | null;
-  educationLayoutPreference?: string;
+  educationLayoutPreference?: EducationLayoutType;
 };
 
 const Education = ({ data, educationLayoutPreference }: Props) => {
-  if (educationLayoutPreference === "1") {
+  if (educationLayoutPreference === educationLayout[0]) {
     return (
       <div>
         <div className="mb-8 text-center">

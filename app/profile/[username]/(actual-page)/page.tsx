@@ -97,6 +97,20 @@ const page = async ({
     return contactData;
   };
 
+  const getUserLayoutPreference = async () => {
+    const layoutPreferenceData = await prisma.layoutPreference.findFirst({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return layoutPreferenceData;
+  };
+
+  const layoutData = await getUserLayoutPreference();
+
   return (
     <>
       <div className="flex w-full flex-col gap-28 px-8 sm:px-12 md:gap-48 md:px-20">
@@ -105,27 +119,35 @@ const page = async ({
           <About
             data={await getBasicInformation()}
             contactData={await getContact()}
-            aboutLayoutPreference="1"
+            aboutLayoutPreference={layoutData?.aboutLayoutPreference}
           />
         </div>
         <BackgroundBeams />
         <div id="experience">
           <Experience
             data={await getUserExperience()}
-            experienceLayoutPreference="1"
+            experienceLayoutPreference={layoutData?.experienceLayoutPreference}
           />
         </div>
         <div id="education">
           <Education
             data={await getUserEducation()}
-            educationLayoutPreference="1"
+            educationLayoutPreference={layoutData?.educationLayoutPreference}
           />
         </div>
         <div id="project">
-          <Project data={await getUserProject()} projectLayoutPreference="1" />
+          <Project
+            data={await getUserProject()}
+            projectLayoutPreference={layoutData?.projectLayoutPreference}
+          />
         </div>
       </div>
-      <Skill data={await getUserSkill()} skillLayoutPreference={"1"} />
+      <div id="skill">
+        <Skill
+          data={await getUserSkill()}
+          skillLayoutPreference={layoutData?.skillLayoutPreference}
+        />
+      </div>
       <Footer />
     </>
   );

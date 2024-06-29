@@ -7,14 +7,15 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ImGithub } from "react-icons/im";
 import { FaLink } from "react-icons/fa6";
+import { projectLayout, ProjectLayoutType } from "@/lib/layout-data";
 
 type Props = {
   data: ProjectData[] | null;
-  projectLayoutPreference?: string;
+  projectLayoutPreference?: ProjectLayoutType;
 };
 
 const Project = ({ data, projectLayoutPreference }: Props) => {
-  if (projectLayoutPreference === "1") {
+  if (projectLayoutPreference === projectLayout[0]) {
     return (
       <div>
         <div className="mb-8 text-center">

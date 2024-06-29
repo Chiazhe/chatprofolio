@@ -3,10 +3,11 @@ import { Skill as SkillData } from "@prisma/client";
 import React from "react";
 import Heading, { HeadingDescription } from "./ui/Heading";
 import { HoverEffect } from "@/components/ui/card-hover-effect-skill_section";
+import { skillLayout, SkillLayoutType } from "@/lib/layout-data";
 
 type Props = {
   data: SkillData[] | null;
-  skillLayoutPreference?: string;
+  skillLayoutPreference?: SkillLayoutType;
 };
 
 const Skill = ({ data, skillLayoutPreference }: Props) => {
@@ -23,9 +24,9 @@ const Skill = ({ data, skillLayoutPreference }: Props) => {
     });
   }
 
-  if (skillLayoutPreference === "1") {
+  if (skillLayoutPreference === skillLayout[0]) {
     return (
-      <div>
+      <>
         <div className="mb-8 text-center">
           <HeadingDescription text="WHAT I EXCEL AT." />
           <Heading text="Skills." />
@@ -33,7 +34,7 @@ const Skill = ({ data, skillLayoutPreference }: Props) => {
         <div className="mx-auto max-w-5xl px-8">
           <HoverEffect items={data} />
         </div>
-      </div>
+      </>
     );
   }
   let secondData = null;

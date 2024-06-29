@@ -9,8 +9,8 @@ import {
   skillLayout,
 } from "../layout-data";
 
-export const PreferenceFormSchema = z.object({
-  // id: z.number().optional(),
+export const LayoutPreferenceFormSchema = z.object({
+  id: z.number().optional(),
   aboutLayoutPreference: z.enum(aboutLayout),
   experienceLayoutPreference: z.enum(experienceLayout),
   educationLayoutPreference: z.enum(educationLayout),
@@ -18,4 +18,6 @@ export const PreferenceFormSchema = z.object({
   skillLayoutPreference: z.enum(skillLayout),
 });
 
-export type LayoutPreferenceFormType = z.infer<typeof PreferenceFormSchema>;
+export type LayoutPreferenceFormType = z.infer<
+  typeof LayoutPreferenceFormSchema
+>;

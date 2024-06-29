@@ -7,15 +7,16 @@ import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import { SiLeetcode } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { AboutLayoutType, aboutLayout } from "@/lib/layout-data";
 
 type Props = {
   data: User | null;
   contactData: Contact | null;
-  aboutLayoutPreference?: string;
+  aboutLayoutPreference?: AboutLayoutType;
 };
 
 const About = ({ data, contactData, aboutLayoutPreference }: Props) => {
-  if (aboutLayoutPreference === "1") {
+  if (aboutLayoutPreference === aboutLayout[0]) {
     return (
       <div className="relative mx-auto flex w-full max-w-[800px] flex-col justify-between gap-8 bg-background md:flex-row">
         <div className="flex flex-col justify-center">
