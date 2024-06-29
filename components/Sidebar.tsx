@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { CgProfile } from "react-icons/cg";
@@ -11,6 +11,7 @@ import { LuFileEdit } from "react-icons/lu";
 import { GiSkills } from "react-icons/gi";
 import { IoIosLogOut } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
+import { MdRoomPreferences } from "react-icons/md";
 
 import { RiContactsBook3Line } from "react-icons/ri";
 import ProfileNavigationButton from "@/app/settings/_components/ProfileNavigationButton";
@@ -77,17 +78,24 @@ const Sidebar = ({ username, user }: Props) => {
       icon: <RiContactsBook3Line />,
       display: !!username,
     },
+    {
+      title: "Preference",
+      action: () => router.push(`/settings/preference`),
+      isActive: path.split("/")[path.split("/").length - 1] === "preference",
+      icon: <MdRoomPreferences />,
+      display: !!username,
+    },
   ];
 
   const logoutHandler = async () => {
-    const res = await logout();
-
-    if ("error" in res) {
-      toast(res.error);
-    } else {
-      toast("Logout success");
-      redirect("/");
-    }
+    await logout();
+    toast("Logout success");
+    // if ("error" in res) {
+    //   toast(res.error);
+    // } else {
+    //   toast("Logout success");
+    //   router.push("/");
+    // }
   };
 
   return (
@@ -110,7 +118,7 @@ const Sidebar = ({ username, user }: Props) => {
             icon={item.icon}
           />
         ))}
-      {!!user ? (
+      {user ? (
         <ProfileNavigationButton
           className="mt-4 bg-primary text-black"
           title="Logout"

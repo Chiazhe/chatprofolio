@@ -15,28 +15,29 @@ datasource db {
 }
 
 model User {
-  id             String        @id @default(cuid())
-  name           String        @default("")
-  username       String?       @unique
-  email          String        @unique
-  emailVerified  DateTime?
-  firstName      String        @default("")
-  lastName       String        @default("")
-  shortIntro     String        @default("")
-  mediumIntro    String        @default("")
-  longIntro      String        @default("")
-  userLocation   String        @default("")
-  image          String?
-  accounts       Account[]
-  sessions       Session[]
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  Education      Education[]
-  WorkExperience Experience[]
-  Project        Project[]
-  Achievement    Achievement[]
-  Skill          Skill[]
-  Contact        Contact[]
+  id               String             @id @default(cuid())
+  name             String             @default("")
+  username         String?            @unique
+  email            String             @unique
+  emailVerified    DateTime?
+  firstName        String             @default("")
+  lastName         String             @default("")
+  shortIntro       String             @default("")
+  mediumIntro      String             @default("")
+  longIntro        String             @default("")
+  userLocation     String             @default("")
+  image            String?
+  accounts         Account[]
+  sessions         Session[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  Education        Education[]
+  WorkExperience   Experience[]
+  Project          Project[]
+  Achievement      Achievement[]
+  Skill            Skill[]
+  Contact          Contact[]
+  LayoutPreference LayoutPreference[]
 
   @@map("users")
 }
@@ -177,4 +178,43 @@ model Contact {
 
   @@index([holderId])
   @@map("contact")
+}
+
+enum AboutLayoutPreference {
+  classic
+  fancy
+}
+
+enum ExperienceLayoutPreference {
+  classic
+  fancy
+}
+
+enum EducationLayoutPreference {
+  classic
+  fancy
+}
+
+enum ProjectLayoutPreference {
+  classic
+  fancy
+}
+
+enum SkillLayoutPreference {
+  classic
+  fancy
+}
+
+model LayoutPreference {
+  id                         Int                       @id @default(autoincrement())
+  aboutLayoutPreference      AboutLayoutPreference     @default(classic)
+  experienceLayoutPreference EducationLayoutPreference @default(classic)
+  educationLayoutPreference  EducationLayoutPreference @default(classic)
+  projectLayoutPreference    ProjectLayoutPreference   @default(classic)
+  skillLayoutPreference      SkillLayoutPreference     @default(classic)
+  holder                     User                      @relation(fields: [holderId], references: [id])
+  holderId                   String
+
+  @@index([holderId])
+  @@map("layoutPreference")
 }

@@ -3,11 +3,7 @@ import { data } from "@/lib/landing-page-data";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-type Props = {
-  data: typeof data;
-};
-
-const HeroRedirectButton = (props: Props) => {
+const HeroRedirectButton = () => {
   const router = useRouter();
   return (
     <button

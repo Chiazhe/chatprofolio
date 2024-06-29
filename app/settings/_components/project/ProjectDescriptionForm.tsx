@@ -33,7 +33,7 @@ export const ProjectDescriptionForm = ({
                   <FormField
                     control={form.control}
                     name={`projects.${index}.projectDescription.${projectDescriptionIndex}`}
-                    render={({}) => (
+                    render={() => (
                       <FormItem>
                         <div className="flex gap-2">
                           <textarea

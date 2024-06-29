@@ -2,9 +2,7 @@ import { data } from "@/lib/landing-page-data";
 import React from "react";
 import HeroRedirectButton from "./HeroRedirectButton";
 
-type Props = {};
-
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
     <div
       id="about"
@@ -19,7 +17,7 @@ const Hero = (props: Props) => {
         <p className="relative z-20 py-3 text-lg font-light">
           {data.hero.subheadline}
         </p>
-        <HeroRedirectButton data={data} />
+        <HeroRedirectButton />
       </div>
     </div>
   );

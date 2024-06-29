@@ -12,9 +12,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { uppercase_first_letter } from "@/lib/reusableFunction";
 
-type Props = {};
-
-const ProfileBreadcrumb = (props: Props) => {
+const ProfileBreadcrumb = () => {
   const router = useRouter();
   const path = usePathname();
   const tempPath = path?.split("/");

@@ -49,17 +49,14 @@ export default async function Home() {
   } else {
     navItems.push({
       name: "Profile",
-      link: `/login`,
+      link: `/settings`,
       icon: <CgProfile className="h-4 w-4 text-white" />,
     });
   }
 
   return (
     <main>
-      <FloatingNav
-        navItems={navItems}
-        className="rounded-none bg-black text-lg"
-      />
+      <FloatingNav navItems={navItems} className="rounded-none text-lg" />
       <Hero />
       <Feature />
       <UserManual />
