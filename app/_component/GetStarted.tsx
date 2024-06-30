@@ -5,9 +5,7 @@ import { data } from "@/lib/landing-page-data";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-type Props = {};
-
-const GetStarted = (props: Props) => {
+const GetStarted = () => {
   const router = useRouter();
 
   return (

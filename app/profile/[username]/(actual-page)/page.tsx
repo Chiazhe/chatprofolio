@@ -97,19 +97,61 @@ const page = async ({
     return contactData;
   };
 
+  const getUserLayoutPreference = async () => {
+    const layoutPreferenceData = await prisma.layoutPreference.findFirst({
+      where: {
+        holder: {
+          username: username,
+        },
+      },
+    });
+
+    return layoutPreferenceData;
+  };
+
+  const layoutData = await getUserLayoutPreference();
+
   return (
     <>
       <div className="flex w-full flex-col gap-28 px-8 sm:px-12 md:gap-48 md:px-20">
-        <About
-          data={await getBasicInformation()}
-          contactData={await getContact()}
-        />
+        <div />
+        <div id="about">
+          <About
+            data={await getBasicInformation()}
+            contactData={await getContact()}
+            aboutLayoutPreference={layoutData?.aboutLayoutPreference}
+          />
+        </div>
         <BackgroundBeams />
-        <Experience data={await getUserExperience()} />
-        <Education data={await getUserEducation()} />
-        <Project data={await getUserProject()} />
+        <div id="experience">
+          <Experience
+            data={await getUserExperience()}
+            experienceLayoutPreference={layoutData?.experienceLayoutPreference}
+          />
+        </div>
+        <div id="education">
+          <Education
+            data={await getUserEducation()}
+            educationLayoutPreference={layoutData?.educationLayoutPreference}
+          />
+        </div>
+        <div id="project">
+          <Project
+            data={await getUserProject()}
+            projectLayoutPreference={layoutData?.projectLayoutPreference}
+          />
+        </div>
+        <div />
       </div>
-      <Skill data={await getUserSkill()} />
+      <div className="flex w-full flex-col gap-28 md:gap-48">
+        <div id="skill">
+          <Skill
+            data={await getUserSkill()}
+            skillLayoutPreference={layoutData?.skillLayoutPreference}
+          />
+        </div>
+        <div />
+      </div>
       <Footer />
     </>
   );

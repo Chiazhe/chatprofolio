@@ -6,6 +6,7 @@ export const logout = async () => {
     const res = await signOut();
     return {};
   } catch (e) {
+    console.log(e);
     return { error: "Logout failed ... Please try again" };
   }
 };

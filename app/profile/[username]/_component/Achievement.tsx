@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const Achievement = (props: Props) => {
+const Achievement = () => {
   return (
     <div id="achievement" className="h-[100vh]">
       Achievement

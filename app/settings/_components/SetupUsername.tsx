@@ -1,9 +1,7 @@
 import React from "react";
 import SetupUsernameForm from "./SetupUsernameForm";
 
-type Props = {};
-
-const SetupUsername = (props: Props) => {
+const SetupUsername = () => {
   return (
     <div>
       <h3 className="text-lg">

@@ -4,9 +4,7 @@ import Image from "next/image";
 import { lilita_one } from "../fonts";
 import { cn } from "@/lib/utils";
 
-type Props = {};
-
-const Feature = (props: Props) => {
+const Feature = () => {
   return (
     <div id="feature" className="bg-black px-12 py-32 sm:px-16 md:px-20">
       <h1

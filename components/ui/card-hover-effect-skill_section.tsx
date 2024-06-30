@@ -1,17 +1,14 @@
+"use client";
 import { cn } from "@/lib/utils";
+import { Skill as SkillData } from "@prisma/client";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useState } from "react";
 
 export const HoverEffect = ({
   items,
   className,
 }: {
-  items: {
-    title: string;
-    description: string;
-    link: string;
-  }[];
+  items: SkillData[];
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -19,14 +16,13 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3",
+        "grid grid-cols-1 py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
         className,
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
+        <div
+          key={idx}
           className="group relative block h-full w-full p-2"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -34,7 +30,7 @@ export const HoverEffect = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 block h-full w-full rounded-3xl bg-neutral-200 dark:bg-slate-800/[0.8]"
+                className="absolute inset-0 block h-full w-full bg-primary/50"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -48,11 +44,13 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+          <Card className="text-center">
+            <CardTitle>{item.skillName}</CardTitle>
+            <CardDescription>
+              {`${item.skillYearsOfExperience} year of experience`}
+            </CardDescription>
           </Card>
-        </Link>
+        </div>
       ))}
     </div>
   );
@@ -68,7 +66,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "relative z-20 h-full w-full overflow-hidden rounded-2xl border border-transparent bg-black p-4 group-hover:border-slate-700 dark:border-white/[0.2]",
+        "relative z-20 h-full w-full overflow-hidden border border-transparent bg-primary p-2 group-hover:border-card",
         className,
       )}
     >
@@ -86,7 +84,12 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("mt-4 font-bold tracking-wide text-zinc-100", className)}>
+    <h4
+      className={cn(
+        "mt-4 text-2xl font-bold tracking-wide text-black",
+        className,
+      )}
+    >
       {children}
     </h4>
   );
@@ -100,10 +103,7 @@ export const CardDescription = ({
 }) => {
   return (
     <p
-      className={cn(
-        "mt-8 text-sm leading-relaxed tracking-wide text-zinc-400",
-        className,
-      )}
+      className={cn("mt-4 leading-relaxed tracking-wide text-card", className)}
     >
       {children}
     </p>
