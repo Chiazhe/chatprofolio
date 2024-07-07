@@ -34,7 +34,17 @@ export async function POST(req: Request) {
       },
       ...messages,
     ],
+    onFinish: (result) => {
+      console.log(messages[messages.length - 1]);
+      console.log("On Finish");
+      console.log(result);
+    },
   });
+
+  console.log("AFter generate");
+
+  console.log(messages);
+  console.log(result.toAIStreamResponse());
 
   return result.toAIStreamResponse();
 }

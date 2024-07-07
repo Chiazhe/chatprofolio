@@ -218,3 +218,13 @@ model LayoutPreference {
   @@index([holderId])
   @@map("layoutPreference")
 }
+
+model ChatbotRecords {
+  id        Int      @id @default(autoincrement())
+  question  String
+  response  String
+  createdAt DateTime @default(now())
+  username  String
+
+  @@index([username])
+}
