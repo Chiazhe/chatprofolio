@@ -4,10 +4,19 @@ import Experience from "../_component/Experience";
 import Education from "../_component/Education";
 import Project from "../_component/Project";
 import Skill from "../_component/Skill";
-import prisma from "@/lib/db";
 import { BackgroundBeams } from "@/components/ui/background-beam";
 import Footer from "../../../../components/Footer";
 import { Metadata } from "next";
+import {
+  getBasicInformation,
+  getContact,
+  getUserEducation,
+  getUserExperience,
+  getUserLayoutPreference,
+  getUserProject,
+  getUserSkill,
+} from "@/actions/get-data";
+import AIChatbox from "../_component/AIChatbox";
 
 export async function generateMetadata(
   {
@@ -27,89 +36,13 @@ const page = async ({
 }: {
   params: { username: string };
 }) => {
-  const getBasicInformation = async () => {
-    const contactData = await prisma.user.findFirst({
-      where: {
-        username: username,
-      },
-    });
-
-    return contactData;
-  };
-
-  const getUserExperience = async () => {
-    const experienceData = await prisma.experience.findMany({
-      where: {
-        holder: {
-          username: username,
-        },
-      },
-    });
-
-    return experienceData;
-  };
-
-  const getUserEducation = async () => {
-    const educationData = await prisma.education.findMany({
-      where: {
-        holder: {
-          username: username,
-        },
-      },
-    });
-
-    return educationData;
-  };
-
-  const getUserProject = async () => {
-    const projectData = await prisma.project.findMany({
-      where: {
-        holder: {
-          username: username,
-        },
-      },
-    });
-
-    return projectData;
-  };
-
-  const getUserSkill = async () => {
-    const skillData = await prisma.skill.findMany({
-      where: {
-        holder: {
-          username: username,
-        },
-      },
-    });
-
-    return skillData;
-  };
-
-  const getContact = async () => {
-    const contactData = await prisma.contact.findFirst({
-      where: {
-        holder: {
-          username: username,
-        },
-      },
-    });
-
-    return contactData;
-  };
-
-  const getUserLayoutPreference = async () => {
-    const layoutPreferenceData = await prisma.layoutPreference.findFirst({
-      where: {
-        holder: {
-          username: username,
-        },
-      },
-    });
-
-    return layoutPreferenceData;
-  };
-
-  const layoutData = await getUserLayoutPreference();
+  const basicInformationData = await getBasicInformation(username);
+  const contactData = await getContact(username);
+  const workExperienceData = await getUserExperience(username);
+  const educationData = await getUserEducation(username);
+  const projectData = await getUserProject(username);
+  const skillData = await getUserSkill(username);
+  const layoutData = await getUserLayoutPreference(username);
 
   return (
     <>
@@ -117,27 +50,27 @@ const page = async ({
         <div />
         <div id="about">
           <About
-            data={await getBasicInformation()}
-            contactData={await getContact()}
+            data={basicInformationData}
+            contactData={contactData}
             aboutLayoutPreference={layoutData?.aboutLayoutPreference}
           />
         </div>
         <BackgroundBeams />
         <div id="experience">
           <Experience
-            data={await getUserExperience()}
+            data={workExperienceData}
             experienceLayoutPreference={layoutData?.experienceLayoutPreference}
           />
         </div>
         <div id="education">
           <Education
-            data={await getUserEducation()}
+            data={educationData}
             educationLayoutPreference={layoutData?.educationLayoutPreference}
           />
         </div>
         <div id="project">
           <Project
-            data={await getUserProject()}
+            data={projectData}
             projectLayoutPreference={layoutData?.projectLayoutPreference}
           />
         </div>
@@ -146,12 +79,21 @@ const page = async ({
       <div className="flex w-full flex-col gap-28 md:gap-48">
         <div id="skill">
           <Skill
-            data={await getUserSkill()}
+            data={skillData}
             skillLayoutPreference={layoutData?.skillLayoutPreference}
           />
         </div>
         <div />
       </div>
+      <AIChatbox
+        username={username}
+        basicInformationData={basicInformationData}
+        contactData={contactData}
+        workExperienceData={workExperienceData}
+        educationData={educationData}
+        projectData={projectData}
+        skillData={skillData}
+      />
       <Footer />
     </>
   );

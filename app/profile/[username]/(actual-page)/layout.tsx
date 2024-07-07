@@ -6,7 +6,6 @@ import { LuFileEdit } from "react-icons/lu";
 import { GiSkills } from "react-icons/gi";
 import { CiSettings } from "react-icons/ci";
 import { auth } from "@/lib/auth";
-import AIChatbox from "../_component/AIChatbox";
 
 export default async function ProfileUpdateLayout({
   children,
@@ -76,7 +75,6 @@ export default async function ProfileUpdateLayout({
     <div className="flex w-full">
       <FloatingNav navItems={navItems} />
       <main className="w-full">{children}</main>
-      <AIChatbox username={username} />
     </div>
   );
 }

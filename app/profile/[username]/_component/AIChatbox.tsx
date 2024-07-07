@@ -1,7 +1,5 @@
-// import { aiChatbox } from "@/assets/icons";
 import { RiRobot2Line } from "react-icons/ri";
 
-// import Image from "next/image";
 import React from "react";
 import {
   Tooltip,
@@ -11,10 +9,34 @@ import {
 } from "@/components/ui/tooltip";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import AIChatContent from "./AIChatContent";
+import {
+  Contact,
+  Education,
+  Experience,
+  Project,
+  Skill,
+  User,
+} from "@prisma/client";
 
-type Props = { username: string };
+type Props = {
+  username: string;
+  basicInformationData: User | null;
+  contactData: Contact | null;
+  workExperienceData: Experience[] | null;
+  educationData: Education[] | null;
+  projectData: Project[] | null;
+  skillData: Skill[] | null;
+};
 
-const AIChatbox = ({ username }: Props) => {
+const AIChatbox = ({
+  username,
+  basicInformationData,
+  contactData,
+  workExperienceData,
+  educationData,
+  projectData,
+  skillData,
+}: Props) => {
   return (
     <>
       <TooltipProvider>
@@ -22,14 +44,8 @@ const AIChatbox = ({ username }: Props) => {
           <Tooltip>
             <DialogTrigger asChild>
               <TooltipTrigger asChild>
-                <button className="fixed bottom-6 right-6 z-[100] rounded-full border-2 border-primary bg-card p-3">
+                <button className="fixed bottom-6 right-6 z-[100] rounded-full border-[1px] border-primary bg-black p-3">
                   <RiRobot2Line className="h-12 w-12" />
-                  {/* <Image
-                    src={aiChatbox}
-                    alt={`AI Chatbox`}
-                    width={50}
-                    height={50}
-                  /> */}
                 </button>
               </TooltipTrigger>
             </DialogTrigger>
@@ -38,7 +54,15 @@ const AIChatbox = ({ username }: Props) => {
             </TooltipContent>
           </Tooltip>
 
-          <AIChatContent />
+          <AIChatContent
+            username={username}
+            basicInformationData={basicInformationData}
+            contactData={contactData}
+            workExperienceData={workExperienceData}
+            educationData={educationData}
+            projectData={projectData}
+            skillData={skillData}
+          />
         </Dialog>
       </TooltipProvider>
     </>

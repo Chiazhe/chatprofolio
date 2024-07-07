@@ -7,6 +7,8 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+  console.log(messages);
+
   const result = await streamText({
     model: openai("gpt-3.5-turbo-1106"),
     messages: [
@@ -23,7 +25,7 @@ export async function POST(req: Request) {
 
             You'll be given questions about the user and also user information that they share on chatprofolio app.
 
-            This is some of the user information:
+            You're a professional intermediate person between the user and the visitor of the user website.
 
             When asked question about user please answer. 
             
