@@ -13,7 +13,7 @@ const page = async () => {
       </h1>
       {user ? (
         <>
-          {(user?.username !== null || user?.username !== undefined) && (
+          {(user?.username === null || user?.username === undefined) && (
             <SetupUsername />
           )}
           {user?.username && (
