@@ -129,7 +129,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name={`projects.${index}.projectImage`}
                     render={({ field }) => (
@@ -144,7 +144,7 @@ const UpdateProjectForm = ({ existingProjects }: Props) => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
                   <div className="md:flex md:w-full">
                     {/* Start Date */}
                     <FormField

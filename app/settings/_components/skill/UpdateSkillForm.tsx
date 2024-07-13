@@ -97,7 +97,7 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name={`skills.${index}.skillRating`}
                     render={({ field }) => (
@@ -109,7 +109,7 @@ const UpdateSkillForm = ({ existingSkills }: Props) => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
                   <div className="my-4">
                     <Button
                       variant="destructive"
