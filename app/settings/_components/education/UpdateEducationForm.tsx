@@ -99,7 +99,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                     )}
                   />
                   {/* Education Type */}
-                  {/* <FormField
+                  <FormField
                     control={form.control}
                     name={`educations.${index}.degree`}
                     render={({ field }) => (
@@ -114,7 +114,7 @@ const UpdateEducationForm = ({ existingEducations }: Props) => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  /> */}
+                  />
                   {/* Field of Study */}
                   <FormField
                     control={form.control}
