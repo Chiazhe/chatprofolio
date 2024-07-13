@@ -14,7 +14,7 @@ const educationSchema = z
   .object({
     id: z.number().optional(),
     institution: z.string().min(2).max(50),
-    degree: z.string().min(2).max(50),
+    degree: z.string().min(2).max(50).nullable(),
     fieldOfStudy: z.string().min(2).max(50),
     specialization: z.array(specializationSchema),
     relevantCourses: z.array(relevantCoursesSchema),
