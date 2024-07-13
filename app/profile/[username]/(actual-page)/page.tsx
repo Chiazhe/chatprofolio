@@ -17,6 +17,7 @@ import {
   getUserSkill,
 } from "@/actions/get-data";
 import AIChatbox from "../_component/AIChatbox";
+import { getUserByUsername } from "@/actions/get-user-by-username";
 
 export async function generateMetadata(
   {
@@ -36,6 +37,19 @@ const page = async ({
 }: {
   params: { username: string };
 }) => {
+  const user = await getUserByUsername(username);
+
+  if (!user) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <p className="text-xl">
+          The user with <span className="italic text-primary">{username}</span>{" "}
+          doesn&apos;t exist.
+        </p>
+      </div>
+    );
+  }
+
   const basicInformationData = await getBasicInformation(username);
   const contactData = await getContact(username);
   const workExperienceData = await getUserExperience(username);
