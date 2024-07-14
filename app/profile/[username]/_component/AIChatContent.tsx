@@ -1,20 +1,11 @@
 "use client";
-import { createChatbotRecords } from "@/actions/create-chatbot-records";
 import {
   DialogContent,
   DialogDescription,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  Contact,
-  Education,
-  Experience,
-  Project,
-  Skill,
-  User,
-} from "@prisma/client";
-import { Message, useChat } from "ai/react";
+import { useChat } from "ai/react";
 import Link from "next/link";
 import { LuSendHorizonal } from "react-icons/lu";
 import { RiRobot2Line } from "react-icons/ri";
@@ -22,62 +13,15 @@ import ReactMarkdown from "react-markdown";
 
 type Props = {
   username: string;
-  basicInformationData: User | null;
-  contactData: Contact | null;
-  workExperienceData: Experience[] | null;
-  educationData: Education[] | null;
-  projectData: Project[] | null;
-  skillData: Skill[] | null;
 };
 
-const AIChatContent = ({
-  username,
-  basicInformationData,
-  contactData,
-  workExperienceData,
-  educationData,
-  projectData,
-  skillData,
-}: Props) => {
+const AIChatContent = ({ username }: Props) => {
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({
-      onFinish: async (message: Message) => {
-        createChatbotRecords(input, message.content, username);
-      },
       body: {
         username: username,
       },
       initialMessages: [
-        {
-          id: "system-message-1",
-          content: `This is general information about the user ${JSON.stringify(basicInformationData)}`,
-          role: "system",
-        },
-        {
-          id: "system-message-2",
-          content: `This is contact information about the user ${JSON.stringify(contactData)}`,
-          role: "system",
-        },
-        {
-          id: "system-message-3",
-          content: `This is work experience infromation about the user ${JSON.stringify(workExperienceData)}`,
-          role: "system",
-        },
-        {
-          id: "system-message-4",
-          content: `This is education information about the user ${JSON.stringify(educationData)}`,
-          role: "system",
-        },
-        {
-          id: "system-message-5",
-          content: `This is past or current project information about the user ${JSON.stringify(projectData)}`,
-          role: "system",
-        },
-        {
-          id: "system-message-6",
-          content: `This is skills information about the user ${JSON.stringify(skillData)}`,
-          role: "system",
-        },
         {
           id: "initial-message-1",
           content: `Hi, I'm ChatProfolioAI. Ask me anything about ${username} and I'll answer you.`,

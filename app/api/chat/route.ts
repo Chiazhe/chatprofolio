@@ -1,13 +1,30 @@
+import { createChatbotRecords } from "@/actions/create-chatbot-records";
+import {
+  getBasicInformation,
+  getContact,
+  getUserEducation,
+  getUserExperience,
+  getUserProject,
+  getUserSkill,
+} from "@/actions/get-data";
 import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
+import { CoreMessage, streamText } from "ai";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages, username }: { messages: CoreMessage[]; username: string } =
+    await req.json();
 
-  console.log(messages);
+  const filteredMessages = messages.filter((m) => m.role !== "system");
+
+  const basicInformationData = await getBasicInformation(username);
+  const contactData = await getContact(username);
+  const workExperienceData = await getUserExperience(username);
+  const educationData = await getUserEducation(username);
+  const projectData = await getUserProject(username);
+  const skillData = await getUserSkill(username);
 
   const result = await streamText({
     model: openai("gpt-3.5-turbo-1106"),
@@ -36,21 +53,44 @@ export async function POST(req: Request) {
             When asked question about user please answer as much as you can. 
             
             If you dont know the answer to the question, then reply that you doesn't have enough information.
+
+            If users ask you question that's not related to the tasks above, reply them that this is not your job assigned
         `,
       },
-      ...messages,
+      {
+        content: `This is general information about the user ${JSON.stringify(basicInformationData)}`,
+        role: "system",
+      },
+      {
+        content: `This is contact information about the user ${JSON.stringify(contactData)}`,
+        role: "system",
+      },
+      {
+        content: `This is work experience infromation about the user ${JSON.stringify(workExperienceData)}`,
+        role: "system",
+      },
+      {
+        content: `This is education information about the user ${JSON.stringify(educationData)}`,
+        role: "system",
+      },
+      {
+        content: `This is past or current project information about the user ${JSON.stringify(projectData)}`,
+        role: "system",
+      },
+      {
+        content: `This is skills information about the user ${JSON.stringify(skillData)}`,
+        role: "system",
+      },
+      ...filteredMessages,
     ],
     onFinish: (result) => {
-      console.log(messages[messages.length - 1]);
-      console.log("On Finish");
-      console.log(result);
+      createChatbotRecords(
+        messages[messages.length - 1].content as string,
+        result.text,
+        username,
+      );
     },
   });
-
-  console.log("AFter generate");
-
-  console.log(messages);
-  console.log(result.toAIStreamResponse());
 
   return result.toAIStreamResponse();
 }

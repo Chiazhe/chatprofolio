@@ -99,15 +99,7 @@ const page = async ({
         </div>
         <div />
       </div>
-      <AIChatbox
-        username={username}
-        basicInformationData={basicInformationData}
-        contactData={contactData}
-        workExperienceData={workExperienceData}
-        educationData={educationData}
-        projectData={projectData}
-        skillData={skillData}
-      />
+      <AIChatbox username={username} />
       <Footer />
     </>
   );

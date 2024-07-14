@@ -9,34 +9,12 @@ import {
 } from "@/components/ui/tooltip";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import AIChatContent from "./AIChatContent";
-import {
-  Contact,
-  Education,
-  Experience,
-  Project,
-  Skill,
-  User,
-} from "@prisma/client";
 
 type Props = {
   username: string;
-  basicInformationData: User | null;
-  contactData: Contact | null;
-  workExperienceData: Experience[] | null;
-  educationData: Education[] | null;
-  projectData: Project[] | null;
-  skillData: Skill[] | null;
 };
 
-const AIChatbox = ({
-  username,
-  basicInformationData,
-  contactData,
-  workExperienceData,
-  educationData,
-  projectData,
-  skillData,
-}: Props) => {
+const AIChatbox = ({ username }: Props) => {
   return (
     <>
       <TooltipProvider>
@@ -54,15 +32,7 @@ const AIChatbox = ({
             </TooltipContent>
           </Tooltip>
 
-          <AIChatContent
-            username={username}
-            basicInformationData={basicInformationData}
-            contactData={contactData}
-            workExperienceData={workExperienceData}
-            educationData={educationData}
-            projectData={projectData}
-            skillData={skillData}
-          />
+          <AIChatContent username={username} />
         </Dialog>
       </TooltipProvider>
     </>
