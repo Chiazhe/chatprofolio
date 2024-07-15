@@ -14,7 +14,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (!data) return false;
       const user = data.user as User;
       const layoutPreference = await prisma.layoutPreference.findFirst({
-        where: { holder: { username: user.username } },
+        where: {
+          holder: { username: { equals: user.username, mode: "insensitive" } },
+        },
       });
 
       // Create Layout Preference for new user

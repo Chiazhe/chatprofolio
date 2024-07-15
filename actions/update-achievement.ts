@@ -37,6 +37,7 @@ export const updateAchievement = async (achievements: AchievementFormType) => {
           data: achievement,
         });
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { id, ...achievementWithoutId } = achievement;
         // New Record
         await prisma.achievement.create({

@@ -84,6 +84,7 @@ export async function POST(req: Request) {
       ...filteredMessages,
     ],
     onFinish: (result) => {
+      console.log("On Finished");
       createChatbotRecords(
         messages[messages.length - 1].content as string,
         result.text,

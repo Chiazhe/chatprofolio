@@ -19,7 +19,7 @@ export const setUsername = async (username: UsernameFormType) => {
 
     if (check) return { error: "Username already taken." };
 
-    const res = await prisma.user.update({
+    await prisma.user.update({
       where: {
         id: user.id,
       },

@@ -38,6 +38,7 @@ const page = async ({
   params: { username: string };
 }) => {
   const user = await getUserByUsername(username);
+  console.log(username);
 
   if (!user) {
     return (
